@@ -1,4 +1,6 @@
 django=3.0.8
 Jinja2==2.11.2
-requests==2.21.0
+requests==2.24.0
 WeasyPrint==51
+numpy==1.19.0
+pandas==1.0.5
