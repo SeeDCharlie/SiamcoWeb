@@ -1,6 +1,6 @@
 django==3.0.8
-setuptools==49.2.0
 Jinja2==2.11.2
 requests==2.24.0
 numpy==1.19.0
 pandas==1.0.5
+weasyprint==49.0.0
