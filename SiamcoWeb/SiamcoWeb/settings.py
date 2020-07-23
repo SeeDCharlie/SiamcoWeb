@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'generateCot.apps.GeneratecotConfig',
+
 ]
 
 MIDDLEWARE = [
@@ -55,7 +56,8 @@ ROOT_URLCONF = 'SiamcoWeb.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'SiamcoWeb/templates')],
+        #os.path.join(BASE_DIR, 'generateCot/templates')
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
