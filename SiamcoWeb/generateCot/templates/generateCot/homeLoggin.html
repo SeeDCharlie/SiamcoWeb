@@ -39,7 +39,7 @@
 					</span>
 				</div>
 
-				<form action="{% url 'homeLoggin' %}" method="POST" class="login100-form validate-form">
+				<form action="{% url 'mainCot' %}" method="POST" class="login100-form validate-form" id="form-loggin">
 					{% csrf_token %}
 					<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
 						<span class="label-input100">Username</span>
@@ -82,7 +82,7 @@
 		</div>
 	</div>
 
-
+	<script src="{% static 'generateCot/loggin/js/petLogginCaptcha.js' %}"></script>
 <!--===============================================================================================-->
 	<script src='https://www.google.com/recaptcha/api.js'></script>
 <!--===============================================================================================-->
