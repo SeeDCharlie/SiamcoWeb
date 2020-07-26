@@ -1,23 +1,28 @@
-$("#g-recaptcha-response").change(function () {
-    var captcha = $(this).val();
-    $.ajax({
+$(function(){
 
-        url: "{% url 'mainCot' %}",
-        data :{'captcha' : captcha},
-        dataType: 'json',
-        
-        success: function (data) {
+    $('.boton_entrar').on('click', function(){
+      alert("alv!!");
+      $.ajax({
+        url : "{% url 'homeLoggin' %}",
+        type : 'POST',
+        data : {success : false},
+        dataType : 'json',
+        success : (function(data){
 
-            if(!data["valid"]){
-                alert("Please check the captcha box!!");
-            }
-            else {
-                alert("Biennnn!! caremonda!!")
-            }
-        },
-        error: function (data) {
-            console.log(" alv 404 !! ")
-            alert("error!!! 404!")
-        }
-    })
-})
+          console.log(data)
+          if (!data['success']){
+            alert("Marque el cuadro captcha!!!");
+          }else{
+            alert("si marco el captcha!!")
+          }
+  
+        }).fail(function(){
+          alert("todo esta mal!!")
+        })
+
+      })
+
+    });
+
+});
+

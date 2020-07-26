@@ -68,23 +68,22 @@
 						</div>
 					</div>
 					<div class="container">
-						<div class="g-recaptcha" data-sitekey="6Lev1bQZAAAAABywXJq4c9ccGqtxRbfhpoBiUsID"></div>
+						<div class="g-recaptcha" data-sitekey="{{captcha_key}}"></div>
 						<br>
 					</div>
 
 					<div class="container-login100-form-btn">
-						<button type="submit" class="login100-form-btn">
+						<button type="submit" class="login100-form-btn boton_entrar" >
 							Login
 						</button>
 					</div>
-				</form>
+				</form>					
 			</div>
 		</div>
 	</div>
 
-	<script src="{% static 'generateCot/loggin/js/petLogginCaptcha.js' %}"></script>
-<!--===============================================================================================-->
-	<script src='https://www.google.com/recaptcha/api.js'></script>
+
+
 <!--===============================================================================================-->
 	<script src="{% static 'generateCot/loggin/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
 <!--===============================================================================================-->
@@ -101,6 +100,11 @@
 	<script src="{% static 'generateCot/loggin/vendor/countdowntime/countdowntime.js' %}"></script>
 <!--===============================================================================================-->
 	<script src="{% static 'generateCot/loggin/js/main.js' %}"></script>
+<!--===============================================================================================-->
+	<script src='https://www.google.com/recaptcha/api.js'></script>
+<!--===============================================================================================-->
+	<script src="{% static 'generateCot/loggin/js/petLogginCaptcha.js' %}"></script>
+
 
 </body>
 </html>

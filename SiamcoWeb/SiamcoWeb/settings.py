@@ -27,6 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+#dats captcha
+CAPTCHA_WEB_KEY = "6Lev1bQZAAAAABywXJq4c9ccGqtxRbfhpoBiUsID"
+CAPTCHA_SECRET_KEY = "6Lev1bQZAAAAAMDLb7YJtfLfZIIVJjtdPtl3h4Wj"
 
 # Application definition
 
