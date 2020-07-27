@@ -1,32 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% load static %}
-    <link rel="icon" type="image/png" href="{% static 'generateCot/loggin/images/icons/favicon.ico' %}"/>
-    <link rel="stylesheet" type="text/css" href="{% static 'generateCot/loggin/vendor/bootstrap/css/bootstrap.min.css' %}">
-    <title>SiamcoApp</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-    <div class="">
+{% block content %}
 
+    <div class="container-fluid">
         
     </div>
-    
-    
 
 
-
-
-
-
-    <script src="{% static 'generateCot/loggin/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
-    <!--<script src="{% static 'generateCot/loggin/js/petLogginCaptcha.js' %}"></script>-->
-    <script src="{% static 'generateCot/loggin/vendor/bootstrap/js/popper.js' %}"></script>
-    <script src="{% static 'generateCot/loggin/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
-    
-
-</body>
-</html>
+{% endblock %}
