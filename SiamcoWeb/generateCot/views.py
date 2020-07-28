@@ -1,5 +1,6 @@
-from django.shortcuts import render
-from django.shortcuts import redirect
+from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 from SiamcoWeb import settings
 from django.http import JsonResponse
 from django.core import serializers
@@ -19,6 +20,7 @@ def homeLoggin(request, msj = ""):
 def mainCot(request):
 
     if request.method == 'POST':
+
         username = request.POST['username']
         password = request.POST['pass']
 
@@ -29,9 +31,8 @@ def mainCot(request):
         cap_server_response = requests.post(url = capt_url, data = cap_data)
         capJson = json.loads(cap_server_response.text)
 
-
         if not capJson['success']:
-            return redirect('homeLoggin', msj = "Por Favor Marque el Captcha!")
+            return redirect(homeLoggin)
 
         else:
             mot = motor_pg()
@@ -42,6 +43,7 @@ def mainCot(request):
                 dictMain = {'fname': r[0], 'lname': r[1]}
                 return render(request, 'generateCot/mainCot.html', dictMain)
             else:
-                return redirect('homeLoggin', msj = "Usuario o Contraseña Incorrectos!!")
+                return redirect( homeLoggin )
     else:    
-        return redirect('homeLoggin')
+        
+        return redirect(homeLoggin)

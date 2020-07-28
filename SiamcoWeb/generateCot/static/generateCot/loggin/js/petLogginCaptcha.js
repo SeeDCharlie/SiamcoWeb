@@ -1,15 +1,14 @@
 $(function(){
 
-    $('.boton_entrar').on('click', function(){
-      alert("alv!!");
+    $('.boton_entrar').click( function(){
+      val dats
       $.ajax({
-        url : "{% url 'homeLoggin' %}",
+        url : "{% url 'mainCot' %}",
         type : 'POST',
         data : {success : false},
         dataType : 'json',
         success : (function(data){
 
-          console.log(data)
           if (!data['success']){
             alert("Marque el cuadro captcha!!!");
           }else{
