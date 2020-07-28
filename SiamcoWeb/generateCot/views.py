@@ -1,17 +1,23 @@
 from django.shortcuts import render
+from django.shortcuts import redirect
 from SiamcoWeb import settings
 from django.http import JsonResponse
 from django.core import serializers
+from generateCot.controls.motorDB import motor_pg
 import urllib
 import requests
 import json
 
-# Create your views here.
 
-def homeLoggin(request):
-    return render(request, 'generateCot/homeLoggin.html', {'captcha_key': settings.CAPTCHA_WEB_KEY}) 
+
+def homeLoggin(request, msj = ""):
+
+    dicTemplate = {'captcha_key': settings.CAPTCHA_WEB_KEY, 'msj': msj}
+
+    return render(request, 'generateCot/homeLoggin.html', dicTemplate )
 
 def mainCot(request):
+
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['pass']
@@ -22,13 +28,20 @@ def mainCot(request):
         cap_data = {'secret': settings.CAPTCHA_SECRET_KEY, 'response': captchaKey}
         cap_server_response = requests.post(url = capt_url, data = cap_data)
         capJson = json.loads(cap_server_response.text)
-        print("captcha json : ", capJson)
 
 
         if not capJson['success']:
-            return JsonResponse(capJson)
-        else:
-            return render(request, 'generateCot/mainCot.html' )
+            return redirect('homeLoggin', msj = "Por Favor Marque el Captcha!")
 
-    else:
-        return render(request, 'generateCot/mainCot.html' )
+        else:
+            mot = motor_pg()
+            r = mot.existUser(username, password)
+            mot.closeDB()
+
+            if r != False :
+                dictMain = {'fname': r[0], 'lname': r[1]}
+                return render(request, 'generateCot/mainCot.html', dictMain)
+            else:
+                return redirect('homeLoggin', msj = "Usuario o Contraseña Incorrectos!!")
+    else:    
+        return redirect('homeLoggin')

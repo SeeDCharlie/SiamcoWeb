@@ -39,7 +39,7 @@
 					</span>
 				</div>
 
-				<form action="{% url 'mainCot' %}" method="POST" class="login100-form validate-form" id="form-loggin">
+				<form action="{% url 'mainCot' %}" method="POST" class="login100-form validate-form" >
 					{% csrf_token %}
 					<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
 						<span class="label-input100">Username</span>
@@ -76,8 +76,10 @@
 						<button type="submit" class="login100-form-btn boton_entrar" >
 							Login
 						</button>
-					</div>
-				</form>					
+					</div> 
+					<br>
+					<p class="text-danger">{{msj}}</p>
+				</form>	
 			</div>
 		</div>
 	</div>
@@ -103,7 +105,7 @@
 <!--===============================================================================================-->
 	<script src='https://www.google.com/recaptcha/api.js'></script>
 <!--===============================================================================================-->
-	<script src="{% static 'generateCot/loggin/js/petLogginCaptcha.js' %}"></script>
+<!--	<script src="{% static 'generateCot/loggin/js/petLogginCaptcha.js' %}"></script> -->
 
 
 </body>

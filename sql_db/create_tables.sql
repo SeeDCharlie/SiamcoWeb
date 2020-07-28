@@ -13,7 +13,9 @@ create table if not exists users(
 	fName					varchar(50),
 	lName					varchar(50),
 	userName				varchar(25) unique not null,
-	userPass				varchar(25),
+	userPass				varchar(25) not null,
+	email					varchar(300),
+	active					
 	primary key (id_user)	
 );
 
