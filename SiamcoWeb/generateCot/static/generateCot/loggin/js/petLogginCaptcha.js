@@ -1,27 +1,36 @@
-$(function(){
+$(function () {
+  $(document).on('submit', '#f_loggin', function (e) {
+    e.preventDefault();
+    $.ajax({
+      url: $(".boton_entrar").attr('urlDestinity'),
+      data: {
+        captchaCheck: grecaptcha.getResponse(),
+        username: $("#username").val(),
+        userpass: $("#userpass").val(),
+        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+        action: 'post'
+      },
+      type: 'POST',
+      dataType: 'json',
+      success: function (data) {
 
-    $('.boton_entrar').click( function(){
-      val dats
-      $.ajax({
-        url : "{% url 'mainCot' %}",
-        type : 'POST',
-        data : {success : false},
-        dataType : 'json',
-        success : (function(data){
-
-          if (!data['success']){
-            alert("Marque el cuadro captcha!!!");
-          }else{
-            alert("si marco el captcha!!")
+        if(!data.success){
+          alert("Por Favor Marque la Caja Captha!");
+        }
+        else{
+          if(!data.userValidate){
+            alert("Usuario o Contraseña Incorrectos");
           }
-  
-        }).fail(function(){
-          alert("todo esta mal!!")
-        })
-
-      })
+        }
+        
+      },
+      error: function () {
+        console.log("no paso nada con el ajax!!");
+      }
 
     });
+
+  });
 
 });
 

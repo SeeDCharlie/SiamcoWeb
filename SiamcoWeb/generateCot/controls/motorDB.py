@@ -40,6 +40,7 @@ class motor_pg():
         statement = 'select (fname, lname) from users where username = %s and userpass = %s'
         result = self.getStatement(statement, (userName, userPass)).fetchone()
         if result != None :
+            print("usuario correcto!")
             names = self.convertFetchOne(result)
             names[0] = names[0].split(" ")[0]
             names[1] = names[1].split(" ")[0]

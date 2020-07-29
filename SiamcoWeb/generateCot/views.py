@@ -11,9 +11,9 @@ import json
 
 
 
-def homeLoggin(request, msj = ""):
+def homeLoggin(request ):
 
-    dicTemplate = {'captcha_key': settings.CAPTCHA_WEB_KEY, 'msj': msj}
+    dicTemplate = {'captcha_key': settings.CAPTCHA_WEB_KEY}
 
     return render(request, 'generateCot/homeLoggin.html', dicTemplate )
 
@@ -21,18 +21,19 @@ def mainCot(request):
 
     if request.method == 'POST':
 
-        username = request.POST['username']
-        password = request.POST['pass']
+        username = request.POST.get('username')
+        password = request.POST.get('userpass')
 
-        captchaKey = request.POST.get('g-recaptcha-response')
-        capt_url = "https://google.com/recaptcha/api/siteverify"
-        
+        captchaKey = request.POST.get('captchaCheck')
+        capt_url = "https://google.com/recaptcha/api/siteverify"      
+
         cap_data = {'secret': settings.CAPTCHA_SECRET_KEY, 'response': captchaKey}
         cap_server_response = requests.post(url = capt_url, data = cap_data)
         capJson = json.loads(cap_server_response.text)
+        capJson['userValidate'] = False
 
         if not capJson['success']:
-            return redirect(homeLoggin)
+            return JsonResponse(capJson)
 
         else:
             mot = motor_pg()
@@ -41,9 +42,10 @@ def mainCot(request):
 
             if r != False :
                 dictMain = {'fname': r[0], 'lname': r[1]}
-                return render(request, 'generateCot/mainCot.html', dictMain)
+                print("entro!!")
             else:
-                return redirect( homeLoggin )
+
+                return JsonResponse(capJson)
     else:    
         
         return redirect(homeLoggin)
