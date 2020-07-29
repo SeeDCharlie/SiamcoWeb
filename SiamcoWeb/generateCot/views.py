@@ -43,6 +43,7 @@ def mainCot(request):
             if r != False :
                 dictMain = {'fname': r[0], 'lname': r[1]}
                 print("entro!!")
+                return render(request, 'generateCot/mainCot.html', dictMain)
             else:
 
                 return JsonResponse(capJson)
