@@ -161,11 +161,12 @@
         <main class="page-content">
             <div class="container-fluid">
                 <h2>SiamcoWeb</h2>
+                {% block content %}
+
+                {% endblock %}
             </div>
         </main>        
-    {% block content %}
-
-    {% endblock %}
+    
     <!-- page-wrapper -->
     <script src="{% static 'generateCot/general/js/jquery.min.js' %}"></script>
     <script src="{% static 'generateCot/general/js/popper.min.js' %}"></script>

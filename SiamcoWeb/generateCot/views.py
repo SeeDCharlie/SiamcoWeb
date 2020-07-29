@@ -49,4 +49,4 @@ def mainCot(request):
                 return JsonResponse(capJson)
     else:    
         
-        return redirect(homeLoggin)
+        return render(request, 'generateCot/mainCot.html', {'fname':'Seed', 'lname':'C'})

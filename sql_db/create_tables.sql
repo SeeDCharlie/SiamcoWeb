@@ -18,5 +18,10 @@ create table if not exists users(
 	active					boolean,
 	primary key (id_user)	
 );
+create table if not exists measurement_units(
+	id_unid					serial,
+	description				varchar(100),
+	code_dian				
 
+);
 commit;
