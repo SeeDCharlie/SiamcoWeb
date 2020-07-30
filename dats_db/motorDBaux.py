@@ -52,10 +52,11 @@ class motor_pg():
 
 """m = motor_pg()
 
-st = 'select (fname, lname) from users where username = %s and userpass = %s'
+st = "select id_unid from measurement_units where code_dian = 'MTK'"
 dats = ("admuno", "aduno")
 stUno = 'select * from users '
 
-print(m.getStatement(st, dats).fetchone() )
+print(m.getStatement(st).fetchone()[0] )
 
-m.closeDB()"""
+m.closeDB()
+"""

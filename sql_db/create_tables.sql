@@ -1,11 +1,21 @@
 --create all tables
+create table if not exists measurement_units(
+	id_unid					serial,
+	description				varchar(50),
+	code_dian				varchar(6),
+	symbol					varchar(3),
+	primary key (id_unid)
+);
 
 create table if not exists activities(
 	cod					varchar(4),
 	description			varchar(500),
-	unit				varchar(6),
+	unit				int,
 	valueUnit			numeric,
-	primary key (cod)
+	primary key (cod),
+	CONSTRAINT fk_unit
+      FOREIGN KEY(unit)
+	  REFERENCES measurement_units(id_unid)
 );
 
 create table if not exists users(
@@ -18,10 +28,5 @@ create table if not exists users(
 	active					boolean,
 	primary key (id_user)	
 );
-create table if not exists measurement_units(
-	id_unid					serial,
-	description				varchar(100),
-	code_dian				
 
-);
 commit;
