@@ -18,6 +18,10 @@ def homeLoggin(request ):
     return render(request, 'generateCot/homeLoggin.html', dicTemplate )
 
 def mainCot(request):
+    mot = motor_pg()
+    colsUno = ['Cod','Descripcion','Und','Valor Und','Cant']
+    colsDos = ['Actividad','Und','Cant','Valor Und','Valor Total']
+    dictTemplate = {'fname':'Seed', 'lname':'C', 'listAct': mot.getActivitiesForTable(), 'colsUno':colsUno, 'colsDos':colsDos}
 
     if request.method == 'POST':
 
@@ -36,7 +40,7 @@ def mainCot(request):
             return JsonResponse(capJson)
 
         else:
-            mot = motor_pg()
+            
             r = mot.existUser(username, password)
             mot.closeDB()
 
@@ -49,4 +53,4 @@ def mainCot(request):
                 return JsonResponse(capJson)
     else:    
         
-        return render(request, 'generateCot/mainCot.html', {'fname':'Seed', 'lname':'C'})
+        return render(request, 'generateCot/mainCot.html', dictTemplate )
