@@ -59,8 +59,10 @@
                     {% for col in colsDos %}
                     <th>{{col}}</th>
                     {% endfor %}
+                    <th></th>
                 </tr>
             </thead>
+                <tr class="no-items"></tr>
             <tbody>
 
             </tbody>
@@ -84,6 +86,17 @@
                     <div class="form-group col">
                         <label for="emClient">Email</label>
                         <input type="text" id="emClient" class="form-control" placeholder="Email Cliente">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="nPlace">Establecimiento</label>
+                        <input type="text" id="nPlace" class="form-control" placeholder="Nombre del Establecimiento">
+                    </div>
+                    <div class="form-group col">
+                        <label for="dPlace">Direccion</label>
+                        <input type="text" id="dPlace" class="form-control" placeholder="Direccion del Establecimiento">
                     </div>
                 </div>
 
@@ -115,9 +128,33 @@
         </div>
     </div>
     <div class="col">
-        <div class="row">
-            <h5 class="display col-12">Total Cotización :</h5>
-        </div>
+        <b><h5 class="row">Total Cotización :</h5></b><br><br>
+     
+            
+            <div class="row">
+                <h6 class="col">Total Mano de Obra + Materiales</h6>
+                <h6 class="col" id="tmom">:</h6>
+            </div>
+            <div class="row">
+                <h6 class="col">Gastos Administrativos  11%</h6>
+                <h6 class="col" id="ta">:</h6>
+            </div>
+            <div class="row">
+                <h6 class="col">Imprevistos  5%</h6>
+                <h6 class="col" id="ti">:</h6>
+            </div>
+            <div class="row">
+                <h6 class="col">Utilidad  5%</h6>
+                <h6 class="col" id="tu">:</h6>
+            </div>
+            <div class="row">
+                <h6 class="col">IVA Sobre la Utilidad  19%</h6>
+                <h6 class="col" id="tiu">:</h6>
+            </div>
+            <div class="row">
+                <h6 class="col">Total Costo Directo + Costo Indirecto</h6>
+                <h6 class="col" id="tdi">:</h6>
+            </div>
         
     </div>
 </div>

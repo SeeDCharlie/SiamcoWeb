@@ -21,7 +21,12 @@ def mainCot(request):
     mot = motor_pg()
     colsUno = ['Cod','Descripcion','Und','Valor Und','Cant', '']
     colsDos = ['Actividad','Und','Cant','Valor Und','Valor Total']
-    dictTemplate = {'fname':'Seed', 'lname':'C', 'listAct': mot.getActivitiesForTable(), 'colsUno':colsUno, 'colsDos':colsDos}
+
+    dictTemplate = {'fname':'Seed', 'lname':'C', 
+                    'listAct': mot.getActivitiesForTable(), 
+                    'colsUno':colsUno,
+                    'colsDos':colsDos
+                    }
 
     if request.method == 'POST':
 
