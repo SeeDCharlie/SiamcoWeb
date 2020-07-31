@@ -19,7 +19,7 @@ def homeLoggin(request ):
 
 def mainCot(request):
     mot = motor_pg()
-    colsUno = ['Cod','Descripcion','Und','Valor Und','Cant']
+    colsUno = ['Cod','Descripcion','Und','Valor Und','Cant', '']
     colsDos = ['Actividad','Und','Cant','Valor Und','Valor Total']
     dictTemplate = {'fname':'Seed', 'lname':'C', 'listAct': mot.getActivitiesForTable(), 'colsUno':colsUno, 'colsDos':colsDos}
 
@@ -37,6 +37,7 @@ def mainCot(request):
         capJson['userValidate'] = False
 
         if not capJson['success']:
+            mot.closeDB()
             return JsonResponse(capJson)
 
         else:
@@ -45,12 +46,13 @@ def mainCot(request):
             mot.closeDB()
 
             if r != False :
-                dictMain = {'fname': r[0], 'lname': r[1]}
-                print("entro!!")
-                return render(request, 'generateCot/mainCot.html', dictMain)
+                dictTemplate['fname'] = r[0]
+                dictTemplate['lname'] = r[1]
+            
+                return render(request, 'generateCot/mainCot.html', dictTemplate)
             else:
 
                 return JsonResponse(capJson)
     else:    
-        
+        mot.closeDB()
         return render(request, 'generateCot/mainCot.html', dictTemplate )
