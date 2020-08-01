@@ -34,15 +34,15 @@
                 {% for acti in listAct %}
                 <tr id="cant{{acti.0}}">
                     {% for dat in acti %}
-                    {% if forloop.counter0 == 3%}
-                        <td style="text-align: center;"> <input type="text" size="4" value="{{dat}}"></td>
+                    {% if forloop.counter0 == 3 %}
+                    <td style="text-align: center;"> <input type="text" size="4" value="{{dat}}"></td>
                     {% else %}
                     <td>{{dat}}</td>
                     {% endif %}
                     {% endfor %}
                     <td style="text-align: center;"> <input type="text" size="2"> </td>
                     <td>
-                        <button type="button" class="btn"><i class="fa fa-plus-circle" aria-hidden=true
+                        <button type="button" class="btn"  value="{{acti.0}}"><i class="fa fa-plus-circle" aria-hidden=true
                                 style="color: chartreuse;"></i> </button>
                     </td>
                 </tr>
@@ -62,7 +62,7 @@
                     <th></th>
                 </tr>
             </thead>
-                <tr class="no-items"></tr>
+            <tr class="no-items"></tr>
             <tbody>
 
             </tbody>
@@ -73,89 +73,97 @@
 </div>
 <hr>
 <div class="row">
+
     <div class="col">
         <h5>Datos de la Cotización :</h5><br>
         <div class="row">
-            <form>
+            
+            <div class="form-row">
+                <div class="form-group col">
+                    <label for="nClient">Cliente</label>
+                    <input type="text" id="nClient" class="form-control" placeholder="Nombre Cliente">
+                </div>
+                <div class="form-group col">
+                    <label for="emClient">Email</label>
+                    <input type="text" id="emClient" class="form-control" placeholder="Email Cliente">
+                </div>
+            </div>
 
-                <div class="form-row">
-                    <div class="form-group col">
-                        <label for="nClient">Cliente</label>
-                        <input type="text" id="nClient" class="form-control" placeholder="Nombre Cliente">
-                    </div>
-                    <div class="form-group col">
-                        <label for="emClient">Email</label>
-                        <input type="text" id="emClient" class="form-control" placeholder="Email Cliente">
-                    </div>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label for="nPlace">Establecimiento</label>
+                    <input type="text" id="nPlace" class="form-control" placeholder="Nombre del Establecimiento">
                 </div>
+                <div class="form-group col">
+                    <label for="dPlace">Direccion</label>
+                    <input type="text" id="dPlace" class="form-control" placeholder="Direccion del Establecimiento">
+                </div>
+            </div>
 
-                <div class="form-row">
-                    <div class="form-group col">
-                        <label for="nPlace">Establecimiento</label>
-                        <input type="text" id="nPlace" class="form-control" placeholder="Nombre del Establecimiento">
-                    </div>
-                    <div class="form-group col">
-                        <label for="dPlace">Direccion</label>
-                        <input type="text" id="dPlace" class="form-control" placeholder="Direccion del Establecimiento">
-                    </div>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label for="nP">Proyecto</label>
+                    <input type="text" id="nProyect" class="form-control" placeholder="Nombre Proyecto">
                 </div>
+                <div class="form-group col">
+                    <label for="nProyect">Propuesta</label>
+                    <input type="text" id="nPropuesta" class="form-control" placeholder="Numero Propuesta">
+                </div>
+            </div>
 
-                <div class="form-row">
-                    <div class="form-group col">
-                        <label for="nP">Proyecto</label>
-                        <input type="text" id="nProyect" class="form-control" placeholder="Nombre Proyecto">
-                    </div>
-                    <div class="form-group col">
-                        <label for="nProyect">Propuesta</label>
-                        <input type="text" id="nPropuesta" class="form-control" placeholder="Numero Propuesta">
-                    </div>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label for="dProyectInit">Fecha Inicio de Obra</label>
+                    <input class="form-control" type="date" id="dProyectInit">
                 </div>
+                <div class="form-group col">
+                    <label for="dProyectFinal">Fecha Final</label>
+                    <input class="form-control" type="date" id="dProyectFinal">
+                </div>
+            </div>
 
-                <div class="form-row">
-                    <div class="form-group col">
-                        <label for="dProyectInit" >Fecha Inicio de Obra</label>
-                        <input class="form-control" type="date" id="dProyectInit">
-                    </div>
-                    <div class="form-group col">
-                        <label for="dProyectFinal" >Fecha Final</label>
-                        <input class="form-control" type="date" id="dProyectFinal">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <button type="submit" class="btn btn-warning">Generar</button>
-                </div>
-            </form>
         </div>
     </div>
+
     <div class="col">
-        <b><h5 class="row">Total Cotización :</h5></b><br><br>
-     
-            
-            <div class="row">
-                <h6 class="col">Total Mano de Obra + Materiales</h6>
-                <h6 class="col" id="tmom">:</h6>
-            </div>
-            <div class="row">
-                <h6 class="col">Gastos Administrativos  11%</h6>
-                <h6 class="col" id="ta">:</h6>
-            </div>
-            <div class="row">
-                <h6 class="col">Imprevistos  5%</h6>
-                <h6 class="col" id="ti">:</h6>
-            </div>
-            <div class="row">
-                <h6 class="col">Utilidad  5%</h6>
-                <h6 class="col" id="tu">:</h6>
-            </div>
-            <div class="row">
-                <h6 class="col">IVA Sobre la Utilidad  19%</h6>
-                <h6 class="col" id="tiu">:</h6>
-            </div>
-            <div class="row">
-                <h6 class="col">Total Costo Directo + Costo Indirecto</h6>
-                <h6 class="col" id="tdi">:</h6>
-            </div>
-        
+        <b>
+            <h5 class="row">Total Cotización :</h5>
+        </b><br><br>
+
+        <div class="row">
+            <h6 class="col" style="font-weight: bold;" >Total Mano de Obra + Materiales</h6>
+            <h6 class="col" id="tmom">:</h6>
+        </div>
+        <br>
+        <div class="row">
+            <h6 class="col">Gastos Administrativos 11%</h6>
+            <h6 class="col" id="ta">:</h6>
+        </div>
+        <br>
+        <div class="row">
+            <h6 class="col">Imprevistos 5%</h6>
+            <h6 class="col" id="ti">:</h6>
+        </div>
+        <br>
+        <div class="row">
+            <h6 class="col">Utilidad 5%</h6>
+            <h6 class="col" id="tu">:</h6>
+        </div>
+        <br>
+        <div class="row">
+            <h6 class="col">IVA Sobre la Utilidad 19%</h6>
+            <h6 class="col" id="tiu">:</h6>
+        </div>
+        <br>
+        <div class="row">
+            <h6 class="col" style="font-weight: bold;">Total Costo Directo + Costo Indirecto</h6>
+            <h6 class="col" id="tdi">:</h6>
+        </div>
+        <br>
+        <div class="row">
+            <button type="button" class="btn btn-warning" id="bGenerate">Generar</button>
+        </div>
+
     </div>
 </div>
 
@@ -167,5 +175,6 @@
 
 <script src="{% static 'generateCot/general/js/addons/datatables.min.js' %}"></script>
 <script src="{% static 'generateCot/general/generatorCot/datatables/confTables.js' %}"></script>
+<script src="{% static 'generateCot/general/generatorCot/datatables/controlTables.js' %}"></script>
 
 {% endblock %}
