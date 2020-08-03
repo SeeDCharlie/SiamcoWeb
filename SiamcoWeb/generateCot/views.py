@@ -20,7 +20,7 @@ def homeLoggin(request ):
 def mainCot(request):
     mot = motor_pg()
     colsUno = ['Cod','Descripcion','Und','Valor Und','Cant', '']
-    colsDos = ['Actividad','Und','Cant','Valor Und','Valor Total']
+    colsDos = ['Actividad','Und','Cant','Valor Und','Valor Total', '']
 
     dictTemplate = {'fname':'Seed', 'lname':'C', 
                     'listAct': mot.getActivitiesForTable(), 

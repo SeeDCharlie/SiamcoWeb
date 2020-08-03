@@ -11,11 +11,23 @@ table.dataTable thead .sorting_desc_disabled:before {
 bottom: .5em;
 }
 
-.my-custom-scrollbar {
-    position: relative;
-    height: 200px;
+.tabledos {
+    height: 450px;
     overflow: auto;
-    }
-    .table-wrapper-scroll-y {
-    display: block;
+  }
+#tabledos thead tr th {
+    position: sticky;
+    top: 0;
+  }
+
+#tabledos  {
+   border-collapse: collapse;
+}
+  
+#tabledos th {
+    text-align: left;
+}
+
+#tabledos {
+    width: 100%;
 }

@@ -32,17 +32,15 @@
             </thead>
             <tbody>
                 {% for acti in listAct %}
-                <tr id="cant{{acti.0}}">
-                    {% for dat in acti %}
-                    {% if forloop.counter0 == 3 %}
-                    <td style="text-align: center;"> <input type="text" size="4" value="{{dat}}"></td>
-                    {% else %}
-                    <td>{{dat}}</td>
-                    {% endif %}
-                    {% endfor %}
-                    <td style="text-align: center;"> <input type="text" size="2"> </td>
+                <tr id="acti{{acti.0}}">
+                    
+                    <td>{{acti.0}}</td>
+                    <td id="d{{acti.0}}" >{{acti.1}}</td>
+                    <td id="u{{acti.0}}">{{acti.2}}</td>
+                    <td style="text-align: center;"> <input type="text" size="4" id="v{{acti.0}}" value="{{acti.3}}"></td>
+                    <td style="text-align: center;"> <input type="text" size="2" id="c{{acti.0}}"> </td>
                     <td>
-                        <button type="button" class="btn"  value="{{acti.0}}"><i class="fa fa-plus-circle" aria-hidden=true
+                        <button type="button" class="btn"  value="{{acti.0}}"><i class="fa fa-plus-circle" 
                                 style="color: chartreuse;"></i> </button>
                     </td>
                 </tr>
@@ -50,24 +48,27 @@
             </tbody>
         </table>
     </div>
-    <div class="col-6 table-wrapper-scroll-y my-custom-scrollbar ">
+    
+    <div class="col-6 tabledos"> 
 
-        <table id="tabledos" class="table table-bordered table-striped table-sm mb-0" cellspacing="0" width="100%"
+        <table id="tabledos" class="table table-bordered table-striped table-sm " cellspacing="0" width="100%"
             style="font-size:12px">
             <thead class="thead-dark">
                 <tr style="text-align: center;">
                     {% for col in colsDos %}
-                    <th>{{col}}</th>
+                    <th class="col-">{{col}}</th>
                     {% endfor %}
-                    <th></th>
+
                 </tr>
-            </thead>
-            <tr class="no-items"></tr>
+            
+            </thead>   
+            
             <tbody>
 
             </tbody>
+               
         </table>
-
+        
     </div>
 
 </div>
@@ -175,6 +176,6 @@
 
 <script src="{% static 'generateCot/general/js/addons/datatables.min.js' %}"></script>
 <script src="{% static 'generateCot/general/generatorCot/datatables/confTables.js' %}"></script>
-<script src="{% static 'generateCot/general/generatorCot/datatables/controlTables.js' %}"></script>
+<script src="{% static 'generateCot/general/generatorCot/datatables/controlTables.1.js' %}"></script>
 
 {% endblock %}
