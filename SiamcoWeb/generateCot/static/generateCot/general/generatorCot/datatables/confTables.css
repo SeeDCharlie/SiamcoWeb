@@ -18,14 +18,10 @@ bottom: .5em;
 #tabledos thead tr th {
     position: sticky;
     top: 0;
-  }
+}
 
 #tabledos  {
    border-collapse: collapse;
-}
-  
-#tabledos th {
-    text-align: left;
 }
 
 #tabledos {

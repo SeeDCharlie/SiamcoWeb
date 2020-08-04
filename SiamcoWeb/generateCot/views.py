@@ -9,7 +9,9 @@ import urllib
 import requests
 import json
 
-
+def docCotHtml(request):
+    
+    return render(request, 'generateCot/modelCot.html')
 
 def homeLoggin(request ):
 

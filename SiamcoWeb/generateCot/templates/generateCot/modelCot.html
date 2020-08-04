@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <title>Cotizacion SiamcoApp</title>
+    <link rel="icon" type="image/png" href="{% static 'generateCot/loggin/images/icons/favicon.ico' %}" />
+    <link rel="stylesheet" href="{% static 'generateCot/general/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'generateCot/general/css/generalStyles.css' %}">
+
+</head>
+
+<body>
+    <div class="container" style="align-content: center;">
+        <div class="row">
+            <form action="">
+                <button class="btn" type="submit">Descargar</button>
+            </form>
+        </div>
+    </div>
+
+
+    <div id="cotDoc" class="container" style="width: 670px;">
+
+        <div id="pageOne" class="row">
+            <div id="encabezadoUno" class="col-12" style="text-align: center;">
+                <img src="{% static 'generateCot/filesModelCot/encabezadoUno.png' %}" alt="User picture">
+            </div>
+            <div id="encabesadoDos" class="col-12" style="text-align: center;">
+                <img src="{% static 'generateCot/filesModelCot/encabezadoDos.png' %}" alt="User picture">
+            </div>
+            <div class="col-12">
+                <div class="col-12">
+                    <br><br><br><br><br><br><br><br>
+                    <h2>Propuesta De Proyecto</h2><br>
+                    <h4>Cliente: SeeD</h4>
+                    <h4>Proyecto: Impermeabilizacion...</h4>
+                    <h4>Autor: SIAMCO Ingenieria SAS / SeeD</h4>
+                    <h4>3/AGO/2020</h4>
+                    <h4>Número de Propuesta: COT-21656-01</h4>
+                </div><br><br><br><br><br><br><br>
+                <hr style="background-color: cornflowerblue;">
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+    <script src="{% static 'generateCot/general/js/jquery.min.js' %}"></script>
+    <script src="{% static 'generateCot/general/js/popper.min.js' %}"></script>
+    <script src="{% static 'generateCot/general/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'generateCot/filesModelCot/html2canvas.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+    <script src="{% static 'generateCot/filesModelCot/controlPdf1.js' %}"></script>
+    
+
+</body>
+
+</html>
