@@ -155,10 +155,12 @@
             <h6 class="col" id="tdi">:</h6>
         </div>
         <br>
-        <div class="row">
-            <button type="button" class="btn btn-warning " id="bGenerate">Generar</button>
-        </div>
-
+        <form action="{% url 'modelCot' %}">
+            <div class="row">
+                <button type="button" class="btn btn-warning " id="bGenerate">Generar</button>
+            </div>
+        </form>
+        
     </div>
 
 

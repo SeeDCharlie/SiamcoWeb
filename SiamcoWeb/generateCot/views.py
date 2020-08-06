@@ -1,5 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from django.http import HttpResponseRedirect
+from django.template.loader import get_template, render_to_string
 from django.urls import reverse
 from SiamcoWeb import settings
 from django.http import JsonResponse
@@ -9,8 +10,11 @@ import urllib
 import requests
 import json
 
+
+
 def docCotHtml(request):
-    
+
+
     return render(request, 'generateCot/modelCot.html')
 
 def homeLoggin(request ):

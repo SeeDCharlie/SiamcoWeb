@@ -5,50 +5,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
-    <title>Cotizacion SiamcoApp</title>
+
     <link rel="icon" type="image/png" href="{% static 'generateCot/loggin/images/icons/favicon.ico' %}" />
     <link rel="stylesheet" href="{% static 'generateCot/general/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'generateCot/general/css/generalStyles.css' %}">
+    <link rel="stylesheet" href="{% static 'generateCot/filesModelCot/styleFormat.css' %}">
 
 </head>
 
 <body>
-    <div class="container" style="align-content: center;">
-        <div class="row">
-            <form action="">
-                <button class="btn" type="submit">Descargar</button>
-            </form>
-        </div>
-    </div>
 
 
-    <div id="cotDoc"  style="width: 670px;">
+    <div id="cotDoc" class="container">
 
-        <div id="pageOne" >
-            <div id="encabezadoUno"  style="text-align: center;">
-                <img src="https://i.ibb.co/YXR324t/encabezado-Uno.png" >
-            </div>
-            <div id="encabesadoDos" class="col-12" style="text-align: center;">
-                <img src="{% static 'generateCot/filesModelCot/encabezadoDos.png' %}" >
-            </div>
-            <div >
-                <div >
-                    <br><br><br><br><br><br><br><br>
+        <div id="pageOne" class="row">
+
+            <div class="col-12">
+                <div class="col-12">
+                    <br><br><br><br><br><br>
                     <h2>Propuesta De Proyecto</h2><br>
                     <h4>Cliente: SeeD</h4>
                     <h4>Proyecto: Impermeabilizacion...</h4>
                     <h4>Autor: SIAMCO Ingenieria SAS / SeeD</h4>
                     <h4>3/AGO/2020</h4>
                     <h4>Número de Propuesta: COT-21656-01</h4>
-                </div><br><br><br><br><br><br><br>
-                <hr style="background-color: cornflowerblue;">
+                </div><br><br><br><br><br>
+                <hr>
             </div>
+            <table class="table" width="100%">
+                <thead>
+                    <tr>
+                        <th scope="col" width="25%">#</th>
+                        <th scope="col" width="25%">First</th>
+                        <th scope="col" width="25%">Last</th>
+                        <th scope="col" width="25%">Handle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row" width="25%">1</th>
+                        <td width="50%">Mark</td>
+                        <td width="50%">Otto</td>
+                        <td width="50%">@mdo</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" width="50%">2</th>
+                        <td width="50%">Jacob</td>
+                        <td width="50%">Thornton</td>
+                        <td width="50%">@fat</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" width="50%">3</th>
+                        <td width="50%">Larry</td>
+                        <td width="50%">the Bird</td>
+                        <td width="50%">@twitter</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
-    </div>
-
-    <div id="tocanvas">
-        <p>contenedor canvas</p>
     </div>
 
 
@@ -58,12 +72,6 @@
     <script src="{% static 'generateCot/general/js/jquery.min.js' %}"></script>
     <script src="{% static 'generateCot/general/js/popper.min.js' %}"></script>
     <script src="{% static 'generateCot/general/js/bootstrap.min.js' %}"></script>
-
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.1/dist/html2canvas.min.js"></script> 
-    <script type="text/javascript" src="{% static 'generateCot/filesModelCot/jspdf.debug.js' %}"></script>
-    <!--<script type="text/javascript" src="{% static 'generateCot/filesModelCot/html2canvas.js' %}"></script>-->
-    <script type="text/javascript" src="{% static 'generateCot/filesModelCot/controlPdf.2.js' %}"></script>
-    
 
 </body>
 
