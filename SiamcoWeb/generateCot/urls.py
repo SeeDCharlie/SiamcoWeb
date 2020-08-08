@@ -6,4 +6,5 @@ urlpatterns = [
     path('', views.homeLoggin, name = 'homeLoggin'),
     path('generate-cot', views.mainCot, name = 'mainCot'),
     path('document', views.docCotHtml, name = 'modelCot'),
+    #ath('document', views.HelloPDFView.as_view(), name = 'modelCot'),
 ]

@@ -7,71 +7,246 @@
     {% load static %}
 
     <link rel="icon" type="image/png" href="{% static 'generateCot/loggin/images/icons/favicon.ico' %}" />
-    <link rel="stylesheet" href="{% static 'generateCot/general/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'generateCot/filesModelCot/styleFormat.css' %}">
 
+    <style>
+        body{
+            margin : 40px;
+        }
+        hr {
+            height: 1px;
+            background-color: #ccc;
+            border: none;
+        }
+
+        #pageOne {
+            
+            font-size: 20px;
+        }
+        #pageTwo{
+            
+            font-size: 15px;
+        }
+    </style>
 </head>
 
 <body>
 
 
-    <div id="cotDoc" class="container">
+    <div id="cotDoc">
 
-        <div id="pageOne" class="row">
+        <div id="pageOne">
 
-            <div class="col-12">
-                <div class="col-12">
-                    <br><br><br><br><br><br>
-                    <h2>Propuesta De Proyecto</h2><br>
-                    <h4>Cliente: SeeD</h4>
-                    <h4>Proyecto: Impermeabilizacion...</h4>
-                    <h4>Autor: SIAMCO Ingenieria SAS / SeeD</h4>
-                    <h4>3/AGO/2020</h4>
-                    <h4>Número de Propuesta: COT-21656-01</h4>
-                </div><br><br><br><br><br>
-                <hr>
-            </div>
-            <table class="table" width="100%">
-                <thead>
-                    <tr>
-                        <th scope="col" width="25%">#</th>
-                        <th scope="col" width="25%">First</th>
-                        <th scope="col" width="25%">Last</th>
-                        <th scope="col" width="25%">Handle</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row" width="25%">1</th>
-                        <td width="50%">Mark</td>
-                        <td width="50%">Otto</td>
-                        <td width="50%">@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row" width="50%">2</th>
-                        <td width="50%">Jacob</td>
-                        <td width="50%">Thornton</td>
-                        <td width="50%">@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row" width="50%">3</th>
-                        <td width="50%">Larry</td>
-                        <td width="50%">the Bird</td>
-                        <td width="50%">@twitter</td>
-                    </tr>
-                </tbody>
+            <br><br>
+            <br><br><br><br><br><br>
+
+
+            <div>
+                <br><br><br><br><br><br>
+                <h1>Propuesta De Proyecto</h1><br>
+                <p>
+                    Cliente: {{nCliente}}<br>
+                    Proyecto: {{nPtoject}}<br>
+                    Autor: SIAMCO Ingenieria SAS / {{nAutor}}<br>
+                    {{dateToday}}<br>
+                    Número de Propuesta: {{nCot}}<br>
+                </p>
+            </div><br><br><br><br>
+            <hr id="hr" color="#019BCC">
+        </div>
+
+        <div id="pageTwo">
+
+            <table>
+                <tr>
+                    <td>
+                        <tr><td>Señores</td></tr>
+                        <tr><td>{{nCliente}}</td></tr> 
+                        <tr><td>{{nPlace}}</td></tr> 
+                        <tr><td>La Ciudad</td></tr>
+                    </td>
+                    <td>
+
+                        <tr>
+                            <td>Fecha.</td>
+                            <td>{{date}}</td>
+                        </tr>
+                        <tr>
+                            <td>COTIZACION No.</td>
+                            <td>{{nCot}}</td>
+                        </tr>
+                        <tr>
+                            <td>DIRECCION.</td>
+                            <td>{{dPlace}}</td>
+                        </tr>
+                        <tr>
+                            <td>Email.</td>
+                            <td>{{eCliente}}</td>
+                        </tr>
+                    </td>
+                </tr>
+
             </table>
+            <br><br>
+            <p>
+                <b>Referencia : {{nProject}}</b> <br>
+                Somos una empresa especializada en el diseño e implementación de soluciones de IMPERMEABILIZACION,
+                ENLUCIMIENTO DE FACHADAS, CONCRETO ESTAMPADO Y PISOS ARQUITECTONICOS.
+                A través de nuestra amplia experiencia y apoyados en productos de alta tecnología e innovación, le
+                brindamos a nuestros clientes la tranquilidad de contar con soluciones de calidad y estabilidad en el
+                tiempo.
+                Las soluciones que ofrecemos cumplen ampliamente con las especificaciones técnicas, económicas y de
+                costo-beneficio, adaptándolas siempre a los requerimientos técnicos y a las necesidades de nuestros
+                clientes.
+            </p><br>
+            <p>
+            <h1>POR QUE SIAMCO INGENIERIA:</h1><br>
+            SOPORTE TECNICO DEL FABRICANTE: Contamos con el acompañamiento técnico de los asesores especializados en las
+            diferentes áreas de trabajo (Toxement, Sika Colombia, Pintuco, Fiber Glass, etc) en el desarrollo de todos
+            los procesos involucrados en esta cotización y que estén relacionados con sus productos.
+            De igual forma, contamos con el acompañamiento y asesoría por parte de Sika Colombia en el suministro y en
+            la aplicación de sus productos.
+            EXPERIENCIA Contamos con un equipo de trabajo capacitado y certificado. Nuestra empresa se encuentra
+            certificada para la realización de este tipo de trabajos.
+            EQUIPOS: Disponemos de equipos certificados para trabajo seguro en alturas, contamos con los equipos de
+            descenso, andamios, elementos de protección personal y demás herramientas
+            especializadas para el desarrollo de las actividades propuestas.
+            SUPERVISION EN OBRA: Con el propósito de asegurar un control permanente en obra y una comunicación fluida
+            con nuestros clientes disponemos de un equipo de personas que en diferentes niveles realizarán la
+            planificación el control y el seguimiento a los trabajos comprometidos en esta propuesta. Se asignará un
+            equipo de trabajo experto para la realización de la labor.
+            </p>
+
+            <p>
+            <h1>SITUACIÓN ACTUAL</h1><br>
+            <p>
+                {{textCot}}
+            </p>
+
+            </p>
+
+            <div class="tableCot">
+                <h1>PRESUPUESTO DE OBRA</h1><br>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Actividad</th>
+                            <th>Unidad</th>
+                            <th>Cantidad</th>
+                            <th>Valor Unitario</th>
+                            <th>Valor Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in rows %}
+                        <tr>
+                            <td>{{row.0}}</td>
+                            <td>{{row.1}}</td>
+                            <td>{{row.2}}</td>
+                            <td>${{row.3}}</td>
+                            <td>${{row.4}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table><br>
+            </div>
+            <p>
+                Nota: Este valor no incluye el IVA <br>
+                Los valores de la presente cotización incluyen: <br>
+            <ul>
+                <li>Supervisión</li>
+                <li>Suministro de todos los materiales para la ejecución de la obra</li>
+                <li>Mano de obra</li>
+                <li>Transporte de materiales y herramientas a las instalaciones de la obra</li>
+                <li>Herramientas y equipos necesarios para la ejecución del trabajo</li>
+                <li>Afiliación de los operarios a la seguridad social (ARL, EPS)</li>
+                <li>Retiro de sobrantes y escombros hasta un botadero debidamente autorizado por el municipio</li>
+            </ul><br>
+            DOTACION Y SEGURIDAD <br>
+            Todo nuestro personal cuenta con certificado de trabajo en alturas, de obligatoria exigencia para esta
+            labor. Nuestro personal cuenta con los requisitos de ley al día, capacitación y elementos de protección
+            personal necesarios para espacios confinados y el manejo de sustancias químicas.
+            Contamos con equipo propio para detección de gases y nivel de oxigeno en
+            espacios confinados para protección de la integridad de nuestro personal y tranquilidad del contratante.
+            <br>
+            GARANTIAS <br>
+
+            <ul>
+                <li>Póliza por manejo del anticipo</li>
+                <li>Póliza de cumplimiento</li>
+                <li>Póliza de salarios y prestaciones sociales</li>
+                <li>Póliza de Calidad de Obra.</li>
+                <li>Todo nuestro personal esta capacitado para realizar los trabajos contratados.</li>
+                <li>Todo nuestro personal posee ARL, EPS y Pensión, antes de comenzar cualquier actividad.</li>
+                <li>Todo nuestro personal tiene los equipos de protección para realizar las actividades propuestas.
+                </li>
+                <li>Todo nuestro personal tiene la certificación de trabajo en alturas del SENA</li>
+            </ul> <br>
+
+            Duracion de la obra : {{fInit}} hasta {{fFinal}} <br>
+
+            Forma de Pago: Anticipo del 50% y pagos semanales correspondientes al avance de la obra.
+            <br>
+            Atentamente, <br>
+            RUFINO JOSE CASTILLO <br>
+            Gerente Técnico de Proyectos <br>
+            E-mail: info@impermeabilizacion.com.co <br>
+
+            NUESTROS CLIENTES: <br>
+
+            <ul>
+                <li>CLINICA NUEVA RAFAEL URIBE URIBE. Impermeabilización de un tanque de
+                    almacenamiento de agua con MEMBRANA PVC. Contacto. Ing. Bayron Saumett. (304) 662-6282.</li>
+                <li>CONJUNTO RESIDENCIAL BALCONES DE CATALUÑA.. Impermeabilización de un
+                    tanque de almacenamiento de agua con recubrimiento epoxico. Contacto. Ing. Carlos Julio Molina.
+                    (315) 439-2429.</li>
+                <li>CONJUNTO RESIDENCIAL MULTIFAMILIARES MULTICENTRO.. Impermeabilización de
+                    un tanque de almacenamiento de agua con Membrana PVC Tanques. Contacto. Magda Lozano. (312)
+                    376-1570.</li>
+                <li>EDIFICIO AMALFI. Impermeabilización de 17 tanques de almacenamiento de agua con recubrimiento
+                    epoxico. Contacto. Sr. David Corkidi. (315) 568-4400.</li>
+                <li>COMFANDI. Impermeabilización losa de cubierta sobre gimnasio Colegio Comfandi San Nicolás.
+                    Contacto. Ing.. Carlos Parra – Planeador Infraestructura. (314) 884-6835.</li>
+                <li>CONSTRUCTORA BALMORAL S.A.. Impermeabilización de tres tanques de
+                    almacenamiento de agua con Membrana PVC Tanques. Contacto. Arq. Esteban Bonilla
+                    – Director de Obra. (317) 667-2621.</li>
+                <li>RB CONSTRUCTORES. Impermeabilización de 2 tanques de almacenamiento de agua
+                    potable y RCI en almacén Olímpica Yumbo. Contacto. Arq. Ottoniel Gómez. (318) 372-8836.</li>
+                <li>SORAY PROYECTOS SA. Impermeabilización de 2 tanques de almacenamiento de
+                    agua potable y RCI en almacén Olímpica Yumbo. Contacto. Arq. Laura Ospina. (317) 488-8759.</li>
+                <li> CONJUNTO RESIDENCIAL CALICANTO II. Impermeabilización de 2 tanques de
+                    almacenamiento de agua potable para consumo humano con Membrana PVC para Tanques. Contacto.
+                    Magda Patricia Lozano (312) 376-1570</li>
+                <li> CONJUNTO RESIDENCIAL PIEDRA GRANDE. Impermeabilización de 2 tanques de
+                    almacenamiento de agua potable para consumo humano con Membrana PVC para Tanques. Contacto.
+                    Magda Patricia Lozano (312) 376-1570.</li>
+                <li>CONJUNTO RESIDENCIAL LOYOLA. Impermeabilización de 2 tanques de almacenamiento de
+                    agua potable para consumo humano con Membrana PVC para Tanques. Contacto. Mariela Celorio (317)
+                    283-3695</li>
+                <li>CONJUNTO RESIDENCIAL CAÑAVERALES SECTOR IV. Impermeabilización tanque de almacenamiento de agua
+                    potable con Membrana PVC (280 M2). Contacto. Dra. Diana Guzmán (315) 282-6542.</li>
+                <li>CONJUNTO RESIDENCIAL PLAZUELA DE SANTA BARBARA. Impermeabilización tanque de almacenamiento de
+                    agua potable con Membrana PVC (270 M2). Contacto. Dra. Nidya Lucía Ariza (311) 741-1467.</li>
+                <li>CONJUNTO RESIDENCIAL LOYOLA. Impermeabilización de 2 tanques de almacenamiento de
+                    agua potable para consumo humano con Membrana PVC para Tanques. Contacto. Mariela Celorio (317)
+                    283-3695.</li>
+                <li>CONJUNTO RESIDENCIAL TORRES COMFANDI CONJUNTO I - Impermeabilización de Tanque de agua potable
+                    de 212M3.</li>
+            </ul>
+
+
+            </p> <br> <br>
+            <h1>NUESTRAS CERTIFICACIONES</h1> <br>
+
+
+
+
+
+
+
         </div>
 
     </div>
 
-
-
-
-
-    <script src="{% static 'generateCot/general/js/jquery.min.js' %}"></script>
-    <script src="{% static 'generateCot/general/js/popper.min.js' %}"></script>
-    <script src="{% static 'generateCot/general/js/bootstrap.min.js' %}"></script>
 
 </body>
 

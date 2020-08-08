@@ -50,7 +50,7 @@
  
     <div class="col-6 tabledos"> 
         <br><br><hr>
-        <table id="tabledos" class="table table-bordered table-striped table-sm " cellspacing="0" width="100%"
+        <table id="tabledos" name="tabledos" class="table table-bordered " cellspacing="0" width="100%"
             style="font-size:12px">
             <thead class="thead-dark">
                 <tr style="text-align: center;">
@@ -155,9 +155,10 @@
             <h6 class="col" id="tdi">:</h6>
         </div>
         <br>
-        <form action="{% url 'modelCot' %}">
+        <form action="{% url 'modelCot' %}" method="POST">
+            {% csrf_token %}
             <div class="row">
-                <button type="button" class="btn btn-warning " id="bGenerate">Generar</button>
+                <button type="submit" class="btn btn-warning " id="bGenerate">Generar</button>
             </div>
         </form>
         

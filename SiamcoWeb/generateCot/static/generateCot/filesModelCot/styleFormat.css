@@ -2,12 +2,20 @@ h2, h4 {
     color: black;
 }
 
+thead th {
+    background-color: chocolate;
+}
+
 table td {
     background-color: blueviolet;
 }
 
 hr {
     background-color: slateblue;
+}
+
+.container {
+    text-align: center;
 }
 
 img {
