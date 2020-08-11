@@ -5,6 +5,10 @@
 {% block scripts %}
 <link rel="stylesheet" type="text/css" href="{% static 'generateCot/general/generatorCot/datatables/confTables.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'generateCot/general/css/addons/datatables.min.css' %}">
+<link rel="stylesheet" href="{% static 'generateCot/general/generatorCot/datatables/css/wysiwyg.css' %}" />
+<link rel="stylesheet" href="{% static 'generateCot/general/generatorCot/datatables/css/highlight.min.css' %}">
+
+
 {% endblock %}
 
 {% block content %}
@@ -118,14 +122,40 @@
                     <input class="form-control" type="text" id="dProyect" placeholder="Duración">
                 </div>
                 <div class="form-group col">
-                    <label for="inputState">Unidad de Tiempo</label>
-                    <select id="durationProject" class="form-control">
+                    <label for="dUnd">Unidad de Tiempo</label>
+                    <select id="dUnd" class="form-control">
                         <option>Hora</option>
                         <option>Dia</option>
                         <option selected>Semana</option>
                         <option>Mes</option>
                         <option>Año</option>
                     </select>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+                Agregar Descripcion de la Obra
+            </button>
+        </div>
+    </div>
+    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Descripcion de la Obra</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Guardar</button>
                 </div>
             </div>
         </div>
@@ -176,10 +206,27 @@
     </div>
 
 
-
 </div>
 </div>
+<div class="container">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1">&nbsp;</div>
+            <div class="col-md-10">
+                <div class="well" style="margin: 2rem 0;">
+                    <div class="form-group">
+                        <label class="control-label" for="editor">Message:</label>
+                        <textarea id="editor" class="form-control" rows="3">
+                            
+                        </textarea>
+                    </div>
+            </div>
+            <div class="col-md-1">&nbsp;</div>
+        </div>
+    </div>
 
+    <hr color="silver">
+</div>
 
 
 {% endblock %}
@@ -190,5 +237,7 @@
 <script src="{% static 'generateCot/general/generatorCot/datatables/confTables.js' %}"></script>
 <script src="{% static 'generateCot/general/generatorCot/datatables/controlTables.js' %}"></script>
 
+<script src="{% static 'generateCot/general/generatorCot/datatables/js/wysiwyg.js' %}"></script>
+<script src="{% static 'generateCot/general/generatorCot/datatables/js/highlight.js' %}"></script>
 
 {% endblock %}
