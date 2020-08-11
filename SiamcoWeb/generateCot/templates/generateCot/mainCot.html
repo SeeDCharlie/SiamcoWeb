@@ -32,14 +32,15 @@
             <tbody>
                 {% for acti in listAct %}
                 <tr id="acti{{acti.0}}">
-                    
+
                     <td>{{acti.0}}</td>
-                    <td id="d{{acti.0}}" >{{acti.1}}</td>
+                    <td id="d{{acti.0}}">{{acti.1}}</td>
                     <td id="u{{acti.0}}">{{acti.2}}</td>
-                    <td style="text-align: center;"> <input type="text" size="4" id="v{{acti.0}}" value="{{acti.3}}"></td>
+                    <td style="text-align: center;"> <input type="text" size="4" id="v{{acti.0}}" value="{{acti.3}}">
+                    </td>
                     <td style="text-align: center;"> <input type="text" size="2" id="c{{acti.0}}"> </td>
                     <td>
-                        <button type="button" class="btn"  value="{{acti.0}}"><i class="fa fa-plus-circle" 
+                        <button type="button" class="btn" value="{{acti.0}}"><i class="fa fa-plus-circle"
                                 style="color: chartreuse;"></i> </button>
                     </td>
                 </tr>
@@ -47,22 +48,27 @@
             </tbody>
         </table>
     </div>
- 
-    <div class="col-6 tabledos"> 
-        <br><br><hr>
-        <table id="tabledos" name="tabledos" class="table table-bordered " cellspacing="0" width="100%"
-            style="font-size:12px">
-            <thead class="thead-dark">
-                <tr style="text-align: center;">
-                    {% for col in colsDos %}
-                    <th class="col-">{{col}}</th>
-                    {% endfor %}
 
-                </tr>
-            </thead>        
-            <tbody>
-            </tbody>
-        </table>
+    <div class="col-6">
+        <br>
+        <hr>
+        <div class="col-12 tabledos">
+
+            <table id="tabledos" name="tabledos" class="table table-bordered " cellspacing="0" width="100%"
+                style="font-size:12px">
+                <thead class="thead-dark">
+                    <tr style="text-align: center;">
+                        {% for col in colsDos %}
+                        <th class="col-">{{col}}</th>
+                        {% endfor %}
+
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
     </div>
 
 </div>
@@ -72,7 +78,7 @@
     <div class="col">
         <h5>Datos de la Cotización :</h5><br>
         <div class="row">
-            
+
             <div class="form-row">
                 <div class="form-group col">
                     <label for="nClient">Cliente</label>
@@ -97,26 +103,31 @@
 
             <div class="form-row">
                 <div class="form-group col">
-                    <label for="nP">Proyecto</label>
+                    <label for="nProyect">Proyecto</label>
                     <input type="text" id="nProyect" class="form-control" placeholder="Nombre Proyecto">
                 </div>
                 <div class="form-group col">
-                    <label for="nProyect">Propuesta</label>
+                    <label for="nPropuesta">Propuesta</label>
                     <input type="text" id="nPropuesta" class="form-control" placeholder="Numero Propuesta">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group col">
-                    <label for="dProyectInit">Fecha Inicio de Obra</label>
-                    <input class="form-control" type="date" id="dProyectInit">
+                    <label for="dProyect">Duración de la Obra</label>
+                    <input class="form-control" type="text" id="dProyect" placeholder="Duración">
                 </div>
                 <div class="form-group col">
-                    <label for="dProyectFinal">Fecha Final</label>
-                    <input class="form-control" type="date" id="dProyectFinal">
+                    <label for="inputState">Unidad de Tiempo</label>
+                    <select id="durationProject" class="form-control">
+                        <option>Hora</option>
+                        <option>Dia</option>
+                        <option selected>Semana</option>
+                        <option>Mes</option>
+                        <option>Año</option>
+                    </select>
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -126,7 +137,7 @@
         </b><br><br>
 
         <div class="row">
-            <h6 class="col" style="font-weight: bold;" >Total Mano de Obra + Materiales</h6>
+            <h6 class="col" style="font-weight: bold;">Total Mano de Obra + Materiales</h6>
             <h6 class="col" id="tmom">:</h6>
         </div>
         <br>
@@ -161,12 +172,12 @@
                 <button type="submit" class="btn btn-warning " id="bGenerate">Generar</button>
             </div>
         </form>
-        
-    </div>
-
-
 
     </div>
+
+
+
+</div>
 </div>
 
 
@@ -177,7 +188,7 @@
 
 <script src="{% static 'generateCot/general/js/addons/datatables.min.js' %}"></script>
 <script src="{% static 'generateCot/general/generatorCot/datatables/confTables.js' %}"></script>
-<script src="{% static 'generateCot/general/generatorCot/datatables/controlTables.1.js' %}"></script>
+<script src="{% static 'generateCot/general/generatorCot/datatables/controlTables.js' %}"></script>
 
 
 {% endblock %}

@@ -1,5 +1,5 @@
 function builRow(dats, id){
-    var row = "<tr id =\"rcot"+id+"\">";
+    var row = '<tr id ="rcot"+id>';
 
     $.each(dats, function(idx,dat){
         row += '<td>' + dat + '</td>';
@@ -36,7 +36,6 @@ $('button').click(function (e) {
             alert("Cantidad o Valor incorrectos : Por favor digite numeros correctos");
         }
         else{
-
             appendRow(builRow(dats, buttonVal));
         }
     }    
