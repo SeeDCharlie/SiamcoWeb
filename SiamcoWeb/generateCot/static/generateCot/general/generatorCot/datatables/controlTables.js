@@ -1,16 +1,12 @@
 
 
-$( document ).ready(function() {
+$(document).ready(function () {
 
-    new FroalaEditor("#edit", {
-        fullPage: true
+    new FroalaEditor("#editText", {
+        fullPage: true,
     });
 });
 
-$('#myModal').on('shown.bs.modal', function () {
-    $('#myInput').trigger('focus')
-    
-})
 
 function builRow(dats, id) {
     var row = '<tr id ="rcot"+id>';
@@ -55,3 +51,6 @@ $('button').click(function (e) {
     }
 
 });
+
+
+

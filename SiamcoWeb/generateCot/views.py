@@ -11,7 +11,7 @@ import urllib
 import requests
 import json
 from easy_pdf.views import PDFTemplateView
-from easy_pdf.rendering import render_to_pdf_response
+from easy_pdf.rendering import render_to_pdf_response, html_to_pdf
 import os.path
 
 
@@ -28,6 +28,8 @@ class HelloPDFView(PDFTemplateView):
                                                           url=url, **kwargs
                                                           )
 
+def pdfdoc(context):
+    print("alv")
 
 def docCotHtml(request):
 
@@ -36,13 +38,15 @@ def docCotHtml(request):
                                   download_filename='cot.pdf', content_type='application/pdf')
 
     if request.method == 'POST':
-        table = request.POST.get('tabledos')
-        print("tabla cot: ", table)
-
+        datsCot = json.loads(request.POST.get('datsCot'))
+        pdf = html_to_pdf()
+        return render_to_pdf_response(request, 'generateCot/modelCot.html', datsCot,
+                                  download_filename='cot.pdf', content_type='application/pdf')
     return resp
 
 
 def homeLoggin(request):
+
 
     dicTemplate = {'captcha_key': settings.CAPTCHA_WEB_KEY}
 
@@ -64,7 +68,7 @@ def mainCot(request):
 
         username = request.POST.get('username')
         password = request.POST.get('userpass')
-
+ 
         captchaKey = request.POST.get('captchaCheck')
         capt_url = "https://google.com/recaptcha/api/siteverify"
 

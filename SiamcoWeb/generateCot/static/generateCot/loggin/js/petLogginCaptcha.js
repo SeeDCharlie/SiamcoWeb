@@ -1,4 +1,6 @@
+
 $(function () {
+
   $(document).on('submit', '#f_loggin', function (e) {
     e.preventDefault();
     $.ajax({

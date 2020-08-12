@@ -44,11 +44,11 @@
                 <br><br><br><br><br><br>
                 <h1>Propuesta De Proyecto</h1><br>
                 <p>
-                    Cliente: {{nCliente}}<br>
-                    Proyecto: {{nPtoject}}<br>
-                    Autor: SIAMCO Ingenieria SAS / {{nAutor}}<br>
+                    Cliente: {{customerName}}<br>
+                    Proyecto: {{projectName}}<br>
+                    Autor: SIAMCO Ingenieria SAS / {{autorName}}<br>
                     {{dateToday}}<br>
-                    Número de Propuesta: {{nCot}}<br>
+                    Número de Propuesta: {{proposalNumber}}<br>
                 </p>
             </div><br><br><br><br>
             <hr id="hr" color="#019BCC">
@@ -60,27 +60,27 @@
                 <tr>
                     <td>
                         <tr><td>Señores</td></tr>
-                        <tr><td>{{nCliente}}</td></tr> 
-                        <tr><td>{{nPlace}}</td></tr> 
+                        <tr><td>{{customerName}}</td></tr> 
+                        <tr><td>{{placeName}}</td></tr> 
                         <tr><td>La Ciudad</td></tr>
                     </td>
                     <td>
 
                         <tr>
                             <td>Fecha.</td>
-                            <td>{{date}}</td>
+                            <td>{{dateToday}}</td>
                         </tr>
                         <tr>
                             <td>COTIZACION No.</td>
-                            <td>{{nCot}}</td>
+                            <td>{{proposalNumber}}</td>
                         </tr>
                         <tr>
                             <td>DIRECCION.</td>
-                            <td>{{dPlace}}</td>
+                            <td>{{placeAddress}}</td>
                         </tr>
                         <tr>
                             <td>Email.</td>
-                            <td>{{eCliente}}</td>
+                            <td>{{customerEmail}}</td>
                         </tr>
                     </td>
                 </tr>
@@ -88,7 +88,7 @@
             </table>
             <br><br>
             <p>
-                <b>Referencia : {{nProject}}</b> <br>
+                <b>Referencia : {{projectName}}</b> <br>
                 Somos una empresa especializada en el diseño e implementación de soluciones de IMPERMEABILIZACION,
                 ENLUCIMIENTO DE FACHADAS, CONCRETO ESTAMPADO Y PISOS ARQUITECTONICOS.
                 A través de nuestra amplia experiencia y apoyados en productos de alta tecnología e innovación, le
@@ -182,7 +182,7 @@
                 <li>Todo nuestro personal tiene la certificación de trabajo en alturas del SENA</li>
             </ul> <br>
 
-            Duracion de la obra : {{dProject}} hasta {{dUnd}} <br>
+            Duracion de la obra : {{durationWork}}  {{unitDuration}} <br>
 
             Forma de Pago: Anticipo del 50% y pagos semanales correspondientes al avance de la obra.
             <br>
@@ -236,10 +236,6 @@
 
             </p> <br> <br>
             <h1>NUESTRAS CERTIFICACIONES</h1> <br>
-
-
-
-
 
 
 
