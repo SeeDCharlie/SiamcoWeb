@@ -5,8 +5,22 @@
 {% block scripts %}
 <link rel="stylesheet" type="text/css" href="{% static 'generateCot/general/generatorCot/datatables/confTables.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'generateCot/general/css/addons/datatables.min.css' %}">
-<link rel="stylesheet" href="{% static 'generateCot/general/generatorCot/datatables/css/wysiwyg.css' %}" />
-<link rel="stylesheet" href="{% static 'generateCot/general/generatorCot/datatables/css/highlight.min.css' %}">
+
+<!--files to edit text-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{% static 'generateCot/general/generatorCot/datatables/css/froala_editor.css' %}">
+<link rel="stylesheet" href="{% static 'generateCot/general/generatorCot/datatables/css/froala_style.css' %}">
+<link rel="stylesheet" href="{% static 'generateCot/general/generatorCot/datatables/css/code_view.css' %}">
+<link rel="stylesheet" href="{% static 'generateCot/general/generatorCot/datatables/css/colors.css' %}">
+<link rel="stylesheet" href="{% static 'generateCot/general/generatorCot/datatables/css/emoticons.css' %}">
+<link rel="stylesheet" href="{% static 'generateCot/general/generatorCot/datatables/css/image_manager.css' %}">
+<link rel="stylesheet" href="{% static 'generateCot/general/generatorCot/datatables/css/image.css' %}">
+<link rel="stylesheet" href="{% static 'generateCot/general/generatorCot/datatables/css/line_breaker.css' %}">
+<link rel="stylesheet" href="{% static 'generateCot/general/generatorCot/datatables/css/table.css' %}">
+<link rel="stylesheet" href="{% static 'generateCot/general/generatorCot/datatables/css/char_counter.css' %}">
+<link rel="stylesheet" href="{% static 'generateCot/general/generatorCot/datatables/css/video.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css">
+
 
 
 {% endblock %}
@@ -134,32 +148,9 @@
             </div>
         </div>
         <br>
-        <div class="row">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
-                Agregar Descripcion de la Obra
-            </button>
-        </div>
+       
     </div>
-    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Descripcion de la Obra</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Guardar</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 
     <div class="col">
         <b>
@@ -195,37 +186,28 @@
             <h6 class="col" style="font-weight: bold;">Total Costo Directo + Costo Indirecto</h6>
             <h6 class="col" id="tdi">:</h6>
         </div>
-        <br>
-        <form action="{% url 'modelCot' %}" method="POST">
-            {% csrf_token %}
-            <div class="row">
-                <button type="submit" class="btn btn-warning " id="bGenerate">Generar</button>
-            </div>
-        </form>
-
+   
+        
     </div>
 
-
 </div>
+<hr color="silver">
 </div>
 <div class="container">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-1">&nbsp;</div>
-            <div class="col-md-10">
-                <div class="well" style="margin: 2rem 0;">
-                    <div class="form-group">
-                        <label class="control-label" for="editor">Message:</label>
-                        <textarea id="editor" class="form-control" rows="3">
-                            
-                        </textarea>
-                    </div>
-            </div>
-            <div class="col-md-1">&nbsp;</div>
-        </div>
-    </div>
+    
+    
 
-    <hr color="silver">
+    <div id="editor">
+        <div id='edit'>
+
+        </div>
+    </div><br><br>
+    <form action="{% url 'modelCot' %}" method="POST">
+        {% csrf_token %}
+        <div class="row">
+            <button type="submit" class="btn btn-warning " id="bGenerate">Generar</button>
+        </div>
+    </form>
 </div>
 
 
@@ -237,7 +219,54 @@
 <script src="{% static 'generateCot/general/generatorCot/datatables/confTables.js' %}"></script>
 <script src="{% static 'generateCot/general/generatorCot/datatables/controlTables.js' %}"></script>
 
-<script src="{% static 'generateCot/general/generatorCot/datatables/js/wysiwyg.js' %}"></script>
-<script src="{% static 'generateCot/general/generatorCot/datatables/js/highlight.js' %}"></script>
+<!--files to edit text-->
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.js"></script>
+<script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/mode/xml/xml.min.js"></script>
+<script type="text/javascript"
+    src="{% static 'generateCot/general/generatorCot/datatables/js/froala_editor.min.js' %}"></script>
+<script type="text/javascript"
+    src="{% static 'generateCot/general/generatorCot/datatables/js/align.min.js' %}"></script>
+<script type="text/javascript"
+    src="{% static 'generateCot/general/generatorCot/datatables/js/code_beautifier.min.js' %}"></script>
+<script type="text/javascript"
+    src="{% static 'generateCot/general/generatorCot/datatables/js/code_view.min.js' %}"></script>
+<script type="text/javascript"
+    src="{% static 'generateCot/general/generatorCot/datatables/js/colors.min.js' %}"></script>
+<script type="text/javascript"
+    src="{% static 'generateCot/general/generatorCot/datatables/js/draggable.min.js' %}"></script>
+<script type="text/javascript"
+    src="{% static 'generateCot/general/generatorCot/datatables/js/emoticons.min.js' %}"></script>
+<script type="text/javascript"
+    src="{% static 'generateCot/general/generatorCot/datatables/js/font_size.min.js' %}"></script>
+<script type="text/javascript"
+    src="{% static 'generateCot/general/generatorCot/datatables/js/font_family.min.js' %}"></script>
+<script type="text/javascript"
+    src="{% static 'generateCot/general/generatorCot/datatables/js/image.min.js' %}"></script>
+<script type="text/javascript"
+    src="{% static 'generateCot/general/generatorCot/datatables/js/image_manager.min.js' %}"></script>
+<script type="text/javascript"
+    src="{% static 'generateCot/general/generatorCot/datatables/js/line_breaker.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'generateCot/general/generatorCot/datatables/js/link.min.js' %}"></script>
+<script type="text/javascript"
+    src="{% static 'generateCot/general/generatorCot/datatables/js/lists.min.js' %}"></script>
+<script type="text/javascript"
+    src="{% static 'generateCot/general/generatorCot/datatables/js/paragraph_format.min.js' %}"></script>
+<script type="text/javascript"
+    src="{% static 'generateCot/general/generatorCot/datatables/js/paragraph_style.min.js' %}"></script>
+<script type="text/javascript"
+    src="{% static 'generateCot/general/generatorCot/datatables/js/table.min.js' %}"></script>
+<script type="text/javascript"
+    src="{% static 'generateCot/general/generatorCot/datatables/js/video.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'generateCot/general/generatorCot/datatables/js/url.min.js' %}"></script>
+<script type="text/javascript"
+    src="{% static 'generateCot/general/generatorCot/datatables/js/entities.min.js' %}"></script>
+<script type="text/javascript"
+    src="{% static 'generateCot/general/generatorCot/datatables/js/char_counter.min.js' %}"></script>
+<script type="text/javascript"
+    src="{% static 'generateCot/general/generatorCot/datatables/js/inline_style.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'generateCot/general/generatorCot/datatables/js/save.min.js' %}"></script>
+
 
 {% endblock %}

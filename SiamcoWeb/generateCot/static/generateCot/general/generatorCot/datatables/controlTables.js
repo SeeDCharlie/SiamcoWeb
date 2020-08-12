@@ -1,14 +1,15 @@
 
-$(document).ready(function () {
-    $('#editor').wysiwyg({
 
+$( document ).ready(function() {
+
+    new FroalaEditor("#edit", {
+        fullPage: true
     });
-
 });
-
 
 $('#myModal').on('shown.bs.modal', function () {
     $('#myInput').trigger('focus')
+    
 })
 
 function builRow(dats, id) {
