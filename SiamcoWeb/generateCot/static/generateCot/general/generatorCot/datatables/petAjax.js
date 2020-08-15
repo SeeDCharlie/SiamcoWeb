@@ -1,9 +1,14 @@
 //send data to server
-
 $(function () {
 
-    $(document).on('submit', '#f_generateCot', function (e) {
-        e.preventDefault();
+    $(document).on('click', '#bGenerate', function (e) {
+        e.preventDefault(e);
+        var date = new Date();
+        date = date.getFullYear() + '-' + date.getMonth() + '-' + date.getDay(); 
+        durationW = $("#dProject").val();
+        if (!$.isNumeric(durationW)){
+            durationW = 0;
+        }
 
         $.ajax({
             url: $("#bGenerate").attr('urlDestinity'),
@@ -16,10 +21,14 @@ $(function () {
                     placeAddress: $("#dPlace").val(),
                     projectName: $("#nProject").val(),
                     proposalNumber: $("#nPropuesta").val(),
-                    durationWork: $("#dProject").val(),
+                    durationWork: durationW,
                     unitDuration: $("#dUnd").val(),
-                    autorName : $("#fName").val() + $("#lName").val(),
-                    dateToday : new Date(),
+                    autorName: $("#fName").text() + $("#lName").text(),
+                    username: $('#UsernameAux').text(),
+                    dateToday:  date,
+                    //otherStyle: $('iframe').contents().find('head').find('style').html()
+                    textCot : $('iframe').contents().find('body').html()
+
                 }),
                 csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
                 action: 'post'
@@ -27,13 +36,23 @@ $(function () {
             type: 'POST',
             dataType: 'json',
             success: function (data) {
-                alert("hahahhaha se enviaron los datos hpta!!");
+                if(data.isRender){
+
+                    alert("okPdf username : "+ data.username);
+                    
+                    $('#f_generateCot').append('<input type="hidden" name="username" value="'+data.username+'" />');
+                    $('#f_generateCot').submit();
+
+                }
             },
             error: function () {
                 alert("no paso nada con el ajax!!");
             }
 
         });
+
+     
+
 
     });
 

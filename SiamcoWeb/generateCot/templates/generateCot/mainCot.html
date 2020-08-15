@@ -122,7 +122,7 @@
             <div class="form-row">
                 <div class="form-group col">
                     <label for="nProyect">Proyecto</label>
-                    <input type="text" id="nProyect" class="form-control" placeholder="Nombre Proyecto">
+                    <input type="text" id="nProject" class="form-control" placeholder="Nombre Proyecto">
                 </div>
                 <div class="form-group col">
                     <label for="nPropuesta">Propuesta</label>
@@ -205,13 +205,20 @@
             </div>
         </div>
     </div><br><br>
-  
-    <form action="{% url 'modelCot' %}" method="POST" id="f_generateCot">
+    
+    <form action="{% url 'modelCot' %}" method="POST" id="f_generateCot" value= "">
         {% csrf_token %}
         <div class="row">
-            <button type="submit" class="btn btn-warning bGenerate" id="bGenerate" urlDestinity="{% url 'modelCot' %}">Generar</button>
+            <input type="button" class="btn btn-warning" id="bGenerate" name="bGenerate" value="Generar"
+                urlDestinity="{% url 'genCot' %}">
         </div>
+        
     </form>
+    
+    <hr>
+    <div id="pdfCont" class="container">
+        
+    </div>
 </div>
 
 

@@ -29,4 +29,36 @@ create table if not exists users(
 	primary key (id_user)	
 );
 
+
+drop table cotizaciones;
+create table if not exists cotizaciones(
+	id_cot					serial,
+	customerName			varchar(100),
+	email					varchar(100),
+	workplace				varchar(100),
+	workAddress				varchar(400),	
+	projectName				varchar(100),
+	proNumber				varchar(20),
+	durationWork			numeric(5),
+	unitDuration			varchar(15),
+	id_user					integer,
+	dateCreate				date,
+	pdfTemplate				text,
+	downloaded				bool,
+	primary	key(id_cot),
+	CONSTRAINT fk_user
+      FOREIGN KEY(id_user)
+	  REFERENCES users(id_user)
+	
+);
+
+/*create table if not exists customers(
+	id_customer				serial,
+	customerName			varchar(100),
+	address					varchar(100),
+	celphone				numeric(10),
+
+);*/
+
+
 commit;

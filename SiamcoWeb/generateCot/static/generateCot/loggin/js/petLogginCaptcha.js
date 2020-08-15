@@ -1,10 +1,11 @@
 
 $(function () {
 
-  $(document).on('submit', '#f_loggin', function (e) {
+  $(document).on('click', '#boton_entrar', function (e) {
+
     e.preventDefault();
     $.ajax({
-      url: $(".boton_entrar").attr('urlDestinity'),
+      url: $("#boton_entrar").attr('urlDestinity'),
       data: {
         captchaCheck: grecaptcha.getResponse(),
         username: $("#username").val(),
@@ -18,10 +19,17 @@ $(function () {
 
         if(!data.success){
           alert("Por Favor Marque la Caja Captha!");
+          location.reload();
         }
         else{
           if(!data.userValidate){
             alert("Usuario o Contraseña Incorrectos");
+            location.reload();
+          }
+          else{
+            alert("submit form!!")
+            $('#f_loggin').submit();
+
           }
         }
         
