@@ -4,11 +4,12 @@ $(function () {
     $(document).on('click', '#bGenerate', function (e) {
         e.preventDefault(e);
         var date = new Date();
-        date = date.getFullYear() + '-' + date.getMonth() + '-' + date.getDay(); 
+        date = date.getFullYear() + '-' + date.getMonth() + '-' + date.getDay();
         durationW = $("#dProject").val();
-        if (!$.isNumeric(durationW)){
+        if (!$.isNumeric(durationW)) {
             durationW = 0;
         }
+        var al = getListActivities();
 
         $.ajax({
             url: $("#bGenerate").attr('urlDestinity'),
@@ -25,9 +26,18 @@ $(function () {
                     unitDuration: $("#dUnd").val(),
                     autorName: $("#fName").text() + $("#lName").text(),
                     username: $('#UsernameAux').text(),
-                    dateToday:  date,
+                    dateToday: date,
+                    actiList: al,
+                    totals : [
+                        $('#tmon').text().substr(2),
+                        $('#ta').text().substr(2),
+                        $('#ti').text().substr(2),
+                        $('#tu').text().substr(2),
+                        $('#tiu').text().substr(2),
+                        $('#tdi').text().substr(2)
+                    ],
                     //otherStyle: $('iframe').contents().find('head').find('style').html()
-                    textCot : $('iframe').contents().find('body').html()
+                    textCot: $('iframe').contents().find('body').html()
 
                 }),
                 csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
@@ -36,11 +46,9 @@ $(function () {
             type: 'POST',
             dataType: 'json',
             success: function (data) {
-                if(data.isRender){
+                if (data.isRender) {
 
-                    alert("okPdf username : "+ data.username);
-                    
-                    $('#f_generateCot').append('<input type="hidden" name="username" value="'+data.username+'" />');
+                    $('#f_generateCot').append('<input type="hidden" name="username" value="' + data.username + '" />');
                     $('#f_generateCot').submit();
 
                 }
@@ -51,9 +59,22 @@ $(function () {
 
         });
 
-     
-
-
     });
+
+    function getListActivities() {
+        var dataStore = [];
+        $('#tabledos tbody tr').each(function (idx,dat) {
+            var td = [$(this).find("#dat0").text(),
+            $(this).find("#dat1").text(),
+            $(this).find("#dat2").text(),
+            $(this).find("#dat3").text(),
+            $(this).find("#dat4").text(),
+            ];
+            
+            dataStore.push(td);
+        });
+        return dataStore;
+
+    }
 
 });

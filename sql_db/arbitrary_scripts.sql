@@ -6,7 +6,7 @@ WHERE pg_stat_activity.datname = 'siamco_db' -- ← change this to your DB
  
 insert into cotizaciones (customerName,email,workplace,workAddress,
 projectName,proNumber,durationWork,unitDuration,id_user,dateCreate,pdfTemplate,downloaded)
-values ('Unidad Global','asas','asasas','asdasd','asdasd','asas');
+values ('Unidad Global','asas','asasas','asdasd','asdasd','asas', );
 
 delete from cotizaciones 
 where id_cot = 3;
