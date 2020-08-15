@@ -12,7 +12,7 @@
 
 
         table {
-            border: 1px;
+            border-collapse: collapse;
         }
         hr {
             height: 20px;
@@ -141,7 +141,7 @@
             </div>
             <div>
                 <br><br><br>
-                <h1>SITUACIÓN ACTUAL</h1><br> <br>
+                <h1>DESCRIPCIÓN DE LA OBRA</h1><br> <br>
                 <div>
                 {{textCot | safe}}
                 </div>
@@ -165,7 +165,7 @@
                             {% if row.0 != '' %}
                             
                         <tr style="background-color:rgb(238, 239, 241);"   >
-                            <td width="600px">{{row.0}}</td>
+                            <td width="600px"><P style="padding: 5px;">{{row.0}}</P></td>
                             <td width="120px">{{row.1}}</td>
                             <td width="120px">{{row.2}}</td>
                             <td width="200px">${{row.3}}</td>
@@ -181,27 +181,27 @@
                     <tbody >
                         <tr >
                             <td width="800px"><b>Total Mano de Obra + Materiales</b></td>
-                            <td width="300px">{{totals.0}}</td>
+                            <td width="300px">$ {{totals.0}}</td>
                         </tr>
                         <tr >
                             <td width="700px">Gastos Administrativos 11%</td>
-                            <td width="400px">{{totals.1}}</td>
+                            <td width="400px">$ {{totals.1}}</td>
                         </tr>
                         <tr >
                             <td width="700px">Imprevistos 5%</td>
-                            <td width="400px">{{totals.2}}</td>
+                            <td width="400px">$ {{totals.2}}</td>
                         </tr>
                         <tr >
                             <td width="700px">Utilidad 5%</td>
-                            <td width="400px">{{totals.3}}</td>
+                            <td width="400px">$ {{totals.3}}</td>
                         </tr>
                         <tr >
                             <td width="700px">IVA Sobre la Utilidad 19%</td>
-                            <td width="400px">{{totals.4}}</td>
+                            <td width="400px">$ {{totals.4}}</td>
                         </tr>
                         <tr >
                             <td width="800px"><b>Total Costo Directo + Costo Indirecto</b></td>
-                            <td width="300px">{{totals.5}}</td>
+                            <td width="300px">$ {{totals.5}} </td>
                         </tr>
 
                     </tbody>

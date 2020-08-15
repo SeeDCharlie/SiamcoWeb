@@ -10,7 +10,15 @@ $(function () {
             durationW = 0;
         }
         var al = getListActivities();
-
+        var totalCot = [
+            $('#tmom').text().substr(2),
+            $('#ta').text().substr(2),
+            $('#ti').text().substr(2),
+            $('#tu').text().substr(2),
+            $('#tiu').text().substr(2),
+            $('#tdi').text().substr(2)
+        ];
+        
         $.ajax({
             url: $("#bGenerate").attr('urlDestinity'),
             data: {
@@ -28,14 +36,7 @@ $(function () {
                     username: $('#UsernameAux').text(),
                     dateToday: date,
                     actiList: al,
-                    totals : [
-                        $('#tmon').text().substr(2),
-                        $('#ta').text().substr(2),
-                        $('#ti').text().substr(2),
-                        $('#tu').text().substr(2),
-                        $('#tiu').text().substr(2),
-                        $('#tdi').text().substr(2)
-                    ],
+                    totals : totalCot,
                     //otherStyle: $('iframe').contents().find('head').find('style').html()
                     textCot: $('iframe').contents().find('body').html()
 

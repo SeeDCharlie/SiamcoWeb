@@ -44,7 +44,7 @@ $(document).ready(function () {
     function changeValueCot() {
         var dat = getSum();
 
-        $('#tmom').html(":$"+(dat*1.0))  ;
+        $('#tmom').html(":$"+(dat*1.0));
         $('#ta').html(":$"+(dat*0.11))  ;
         $('#ti').html(":$"+(dat*0.05))  ;
         $('#tu').html(":$"+(dat*0.05))  ;
