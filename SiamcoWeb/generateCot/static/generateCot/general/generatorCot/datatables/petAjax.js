@@ -38,7 +38,8 @@ $(function () {
                     actiList: al,
                     totals : totalCot,
                     //otherStyle: $('iframe').contents().find('head').find('style').html()
-                    textCot: $('iframe').contents().find('body').html()
+                    textCot: getTextCot(),
+                    textNote: $('#textNote').val()
 
                 }),
                 csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
@@ -76,6 +77,10 @@ $(function () {
         });
         return dataStore;
 
+    }
+    function getTextCot(){
+        $('iframe').contents().find('table').addClass("tableDos");
+        return $('iframe').contents().find('body').html();
     }
 
 });

@@ -3,7 +3,15 @@ body {
     padding-left: 10px;
     padding-right: 10px;
     text-align: justify;
-    font-size: 12px;
+    font-size: 14px;
+
+}
+@page {
+    
+    @bottom-right {
+        content: "Pagina "counter(page) " de "counter(pages);
+        
+    }
 
 }
 
@@ -56,29 +64,37 @@ footer {
     border-color: darkgray ;
 }
 .tableDos tbody td{
-    padding: 6px;
+    margin: 6px;
+    padding: 6px ;
+    font-size: 12px;
     text-align: justify;
 }
 .tableDos thead tr{
     background-color: rgb(8, 113, 161) !important;
 }
 .tableDos thead th{
+    font-family: monserrat;
     color: white !important;
     font-size: 15px;
+    margin: 6px;
     padding: 6px;
     text-align: center;
 
 }
 .tableDos tr:nth-child(even){background-color: #ddd !important;}
-.tableDos tr:hover {background-color: #dfdfdf !important;}
+.tableDos tr:hover {background-color: #e9e9e9 !important;}
 
-.tableUno tr:nth-child(even){background-color: #dfdfdf !important;}
+.tableUno tr:nth-child(even){background-color: #e9e9e9 !important;}
 .tableUno tr:hover {background-color: #ddd !important;}
-@page {
-    
-    @bottom-right {
-        content: "Pagina "counter(page) " de "counter(pages);
-        
-    }
 
+
+.textCot{
+    width: 100%;
+}
+.textCot body{
+    width: 100%;
+}
+
+.textGrey{
+    color: rgb(121, 121, 121) !important;
 }

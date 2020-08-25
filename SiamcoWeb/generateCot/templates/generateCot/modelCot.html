@@ -68,7 +68,7 @@
             <br>
             <table style="width:100%">
                 <tr>
-                    <td style="width: 50%;">
+                    <td style="width: 50%; margin-right: 5px; padding-right: 5px;">
                         <table>
                             <tr>
                                 <td>
@@ -93,7 +93,7 @@
                         </table>
                     </td>
 
-                    <td style="width: 50%;">
+                    <td style="width: 50%; margin-left: 5px; padding-left: 5px;">
                         <div class="tableUno">
                             <table class="" style="width: 100%;">
                                 <tr>
@@ -110,15 +110,12 @@
                                 </tr>
                                 <tr>
                                     <td>Email.</td>
-                                    <td>{{customerEmail}}</td>
+                                    <td><u>{{customerEmail}}</u></td>
                                 </tr>
                             </table>
                         </div>
-
                     </td>
-
                 </tr>
-
             </table>
             <br><br>
             <p>
@@ -133,34 +130,43 @@
                 clientes.
             </p>
             <p>
-            <h2 style="color: darkcyan !important;">POR QUE SIAMCO INGENIERIA:</h2>
-            <u>SOPORTE TECNICO DEL FABRICANTE:</u> Contamos con el acompañamiento técnico de los asesores especializados
-            en las
-            diferentes áreas de trabajo (Toxement, Sika Colombia, Pintuco, Fiber Glass, etc) en el desarrollo de todos
-            los procesos involucrados en esta cotización y que estén relacionados con sus productos. <br><br>
-            De igual forma, contamos con el acompañamiento y asesoría por parte de Sika Colombia en el suministro y en
-            la aplicación de sus productos. <br><br>
-            <u>EXPERIENCIA:</u> Contamos con un equipo de trabajo capacitado y certificado. Nuestra empresa se encuentra
-            certificada para la realización de este tipo de trabajos. <br><br>
-            EQUIPOS: Disponemos de equipos certificados para trabajo seguro en alturas, contamos con los equipos de
-            descenso, andamios, elementos de protección personal y demás herramientas
-            especializadas para el desarrollo de las actividades propuestas. <br><br>
-            <u>SUPERVISION EN OBRA:</u> Con el propósito de asegurar un control permanente en obra y una comunicación
-            fluida
-            con nuestros clientes disponemos de un equipo de personas que en diferentes niveles realizarán la
-            planificación el control y el seguimiento a los trabajos comprometidos en esta propuesta. Se asignará un
-            equipo de trabajo experto para la realización de la labor. <br><br>
+                <strong style="color: darkcyan !important;">
+                    <h4>POR QUE SIAMCO INGENIERIA:</h4>
+                </strong>
+                <u>SOPORTE TECNICO DEL FABRICANTE:</u> Contamos con el acompañamiento técnico de los asesores
+                especializados
+                en las
+                diferentes áreas de trabajo (Toxement, Sika Colombia, Pintuco, Fiber Glass, etc) en el desarrollo de
+                todos
+                los procesos involucrados en esta cotización y que estén relacionados con sus productos. <br><br>
+                De igual forma, contamos con el acompañamiento y asesoría por parte de Sika Colombia en el suministro y
+                en
+                la aplicación de sus productos. <br><br>
+                <u>EXPERIENCIA:</u> Contamos con un equipo de trabajo capacitado y certificado. Nuestra empresa se
+                encuentra
+                certificada para la realización de este tipo de trabajos. <br><br>
+                EQUIPOS: Disponemos de equipos certificados para trabajo seguro en alturas, contamos con los equipos de
+                descenso, andamios, elementos de protección personal y demás herramientas
+                especializadas para el desarrollo de las actividades propuestas. <br><br>
+                <u>SUPERVISION EN OBRA:</u> Con el propósito de asegurar un control permanente en obra y una
+                comunicación
+                fluida
+                con nuestros clientes disponemos de un equipo de personas que en diferentes niveles realizarán la
+                planificación el control y el seguimiento a los trabajos comprometidos en esta propuesta. Se asignará un
+                equipo de trabajo experto para la realización de la labor. <br><br>
             </p>
-            <div style="page-break-before: always">
-                <h2>DESCRIPCIÓN DE LA OBRA</h2><br> <br>
-                <div>
+            <div>
+
+                <h3 class="textGrey"
+                    style="width: 100%; text-align: left; background-color: rgb(255, 235, 59) !important;">DESCRIPCIÓN
+                    DE LA OBRA</h3><br><br>
+                <div class="textCot">
+
                     {{textCot | safe}}
                 </div>
             </div>
-
-
             <div style="page-break-before: always">
-                <h2>PRESUPUESTO DE OBRA</h2><br>
+                <h3 class="textGrey">PRESUPUESTO DE OBRA</h3><br>
                 <table class="tableDos">
                     <thead>
                         <tr>
@@ -168,21 +174,19 @@
                             <th>Und</th>
                             <th>Cant</th>
                             <th>Valor Unitario</th>
-                            <th>Valor Total</th>
+                            <th style="width: 15%;">Valor Total</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for row in actiList %}
                         {% if row.0 != '' %}
-
                         <tr>
                             <td>{{row.0}}</td>
                             <td>{{row.1}}</td>
                             <td>{{row.2}}</td>
                             <td>${{row.3}}</td>
-                            <td>${{row.4}}</td>
+                            <td style="width:15%;">${{row.4}}</td>
                         </tr>
-
                         {% endif %}
                         {% endfor %}
                         <tr>
@@ -190,48 +194,48 @@
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td><b>$ {{totals.0}}</b></td>
+                            <td style="width: 15%;"><b>$ {{totals.0}}</b></td>
                         </tr>
                         <tr>
-                            <td style="text-align: right;">Gastos Administrativos 11%</td>
-                            <td></td>
+                            <td style="text-align: right;">Gastos Administrativos </td>
+                            <td style="text-align: right;">11%</td>
                             <td></td>
                             <td>$ {{totals.1}}</td>
-                            <td></td>
+                            <td style="width: 15%;"></td>
                         </tr>
                         <tr>
-                            <td style="text-align: right;">Imprevistos 5%</td>
-                            <td></td>
+                            <td style="text-align: right;">Imprevistos </td>
+                            <td style="text-align: right;">5%</td>
                             <td></td>
                             <td>$ {{totals.2}}</td>
-                            <td></td>
+                            <td style="width: 15%;"></td>
                         </tr>
                         <tr>
-                            <td style="text-align: right;">Utilidad 5%</td>
-                            <td></td>
+                            <td style="text-align: right;">Utilidad </td>
+                            <td style="text-align: right;">5%</td>
                             <td></td>
                             <td>$ {{totals.3}}</td>
-                            <td></td>
+                            <td style="width: 15%;"></td>
                         </tr>
                         <tr>
-                            <td style="text-align: right;">IVA Sobre la Utilidad 19%</td>
-                            <td></td>
+                            <td style="text-align: right;">IVA Sobre la Utilidad </td>
+                            <td style="text-align: right;">19%</td>
                             <td></td>
                             <td>$ {{totals.4}}</td>
-                            <td></td>
+                            <td style="width: 15%;"></td>
                         </tr>
                         <tr>
                             <td><b>Total Costo Directo + Costo Indirecto</b></td>
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td><b>$ {{totals.5}} </b></td>
+                            <td style="width: 15%;"><b>$ {{totals.5}} </b></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             <p style="page-break-before: always">
-                <strong>Nota:</strong> Este valor no incluye el IVA <br><br>
+                <strong>Nota:</strong> {{textNote}} <br><br>
                 <strong>Los valores de la presente cotización incluyen:</strong> <br>
             <ul>
                 <li>Supervisión</li><br>
@@ -242,14 +246,14 @@
                 <li>Afiliación de los operarios a la seguridad social (ARL, EPS)</li><br>
                 <li>Retiro de sobrantes y escombros hasta un botadero debidamente autorizado por el municipio</li><br>
             </ul><br>
-            <strong>DOTACION Y SEGURIDAD </strong> <br><br> 
+            <strong>DOTACION Y SEGURIDAD </strong> <br><br>
             Todo nuestro personal cuenta con certificado de trabajo en alturas, de obligatoria exigencia para esta
             labor. Nuestro personal cuenta con los requisitos de ley al día, capacitación y elementos de protección
             personal necesarios para espacios confinados y el manejo de sustancias químicas.
             Contamos con equipo propio para detección de gases y nivel de oxigeno en
             espacios confinados para protección de la integridad de nuestro personal y tranquilidad del contratante.
             <br><br>
-            <strong>GARANTIAS</strong> <br><br> 
+            <strong>GARANTIAS</strong> <br><br>
 
             <ul>
                 <li>Póliza por manejo del anticipo</li><br>
@@ -272,29 +276,29 @@
             Gerente Técnico de Proyectos <br>
             E-mail: info@impermeabilizacion.com.co <br>
 
-            <h2 style="page-break-before: always">
+            <h3 class="textGrey" style="page-break-before: always">
                 NUESTROS CLIENTES: <br>
-            </h2>
+            </h3>
 
             <ul>
-                <li>CLINICA NUEVA RAFAEL URIBE URIBE. Impermeabilización de un tanque de
+                <li> CLINICA NUEVA RAFAEL URIBE URIBE. Impermeabilización de un tanque de
                     almacenamiento de agua con MEMBRANA PVC. Contacto. Ing. Bayron Saumett. (304) 662-6282.</li><br>
-                <li>CONJUNTO RESIDENCIAL BALCONES DE CATALUÑA.. Impermeabilización de un
+                <li> CONJUNTO RESIDENCIAL BALCONES DE CATALUÑA.. Impermeabilización de un
                     tanque de almacenamiento de agua con recubrimiento epoxico. Contacto. Ing. Carlos Julio Molina.
                     (315) 439-2429.</li><br>
-                <li>CONJUNTO RESIDENCIAL MULTIFAMILIARES MULTICENTRO.. Impermeabilización de
+                <li> CONJUNTO RESIDENCIAL MULTIFAMILIARES MULTICENTRO.. Impermeabilización de
                     un tanque de almacenamiento de agua con Membrana PVC Tanques. Contacto. Magda Lozano. (312)
                     376-1570.</li><br>
-                <li>EDIFICIO AMALFI. Impermeabilización de 17 tanques de almacenamiento de agua con recubrimiento
+                <li> EDIFICIO AMALFI. Impermeabilización de 17 tanques de almacenamiento de agua con recubrimiento
                     epoxico. Contacto. Sr. David Corkidi. (315) 568-4400.</li><br>
-                <li>COMFANDI. Impermeabilización losa de cubierta sobre gimnasio Colegio Comfandi San Nicolás.
+                <li> COMFANDI. Impermeabilización losa de cubierta sobre gimnasio Colegio Comfandi San Nicolás.
                     Contacto. Ing.. Carlos Parra – Planeador Infraestructura. (314) 884-6835.</li><br>
-                <li>CONSTRUCTORA BALMORAL S.A.. Impermeabilización de tres tanques de
+                <li> CONSTRUCTORA BALMORAL S.A.. Impermeabilización de tres tanques de
                     almacenamiento de agua con Membrana PVC Tanques. Contacto. Arq. Esteban Bonilla
                     – Director de Obra. (317) 667-2621.</li><br>
                 <li>RB CONSTRUCTORES. Impermeabilización de 2 tanques de almacenamiento de agua
                     potable y RCI en almacén Olímpica Yumbo. Contacto. Arq. Ottoniel Gómez. (318) 372-8836.</li><br>
-                <li>SORAY PROYECTOS SA. Impermeabilización de 2 tanques de almacenamiento de
+                <li> SORAY PROYECTOS SA. Impermeabilización de 2 tanques de almacenamiento de
                     agua potable y RCI en almacén Olímpica Yumbo. Contacto. Arq. Laura Ospina. (317) 488-8759.</li><br>
                 <li> CONJUNTO RESIDENCIAL CALICANTO II. Impermeabilización de 2 tanques de
                     almacenamiento de agua potable para consumo humano con Membrana PVC para Tanques. Contacto.
@@ -307,43 +311,112 @@
                     283-3695</li><br>
                 <li>CONJUNTO RESIDENCIAL CAÑAVERALES SECTOR IV. Impermeabilización tanque de almacenamiento de agua
                     potable con Membrana PVC (280 M2). Contacto. Dra. Diana Guzmán (315) 282-6542.</li><br>
-                <li>CONJUNTO RESIDENCIAL PLAZUELA DE SANTA BARBARA. Impermeabilización tanque de almacenamiento de
-                    agua potable con Membrana PVC (270 M2). Contacto. Dra. Nidya Lucía Ariza (311) 741-1467.</li><br>
+                <li>CONJUNTO RESIDENCIAL PLAZUELA DE SANTA BARBARA. Impermeabilización tanque de almacenamiento de agua
+                    potable con Membrana PVC (270 M2). Contacto. Dra. Nidya Lucía Ariza (311) 741-1467.</li><br>
                 <li>CONJUNTO RESIDENCIAL LOYOLA. Impermeabilización de 2 tanques de almacenamiento de
                     agua potable para consumo humano con Membrana PVC para Tanques. Contacto. Mariela Celorio (317)
                     283-3695.</li><br>
-                <li>CONJUNTO RESIDENCIAL TORRES COMFANDI CONJUNTO I - Impermeabilización de Tanque de agua potable
-                    de 212M3.</li><br>
+                <li>CONJUNTO RESIDENCIAL TORRES COMFANDI CONJUNTO I - Impermeabilización de Tanque de agua potable de
+                    212M3.</li><br>
+                <li>CONJUNTO RESIDENCIAL Villa del Sol Sector I y IV - Impermeabilización de 2 Tanques de
+                    Almacenamiento de Agua Potable de 144M3 y de 96M3. Contacto: Dra. Deyanira Moreno.
+                    (316) 295-9852.</li><br>
+                <li>CONJUNTO RESIDENCIAL COMFANDI O. Impermeabilización de tanque de almacenamiento de agua potable con
+                    sistema Epoxico. Contacto. Janeth Cuervo. (316) 638-8934</li><br>
+                <li>CONJUNTO RESIDENCIAL QUINTAS DEL LLILI. Impermeabilización de un tanque de
+                    almacenamiento de agua con el Sistema Sikaplan®12 NTR. Contacto. Dra. Jenny Marquez –
+                    Administradora. (318) 323-9935.</li><br>
+                <li>CONJUNTO RESIDENCIAL VALPARAISO - Impermeabilización de Tanque de agua potable de
+                    35M3.</li><br>
+                <li>EDIFICIO SCARLATTA. Hidrolavado e hidrofugado de 3400 m2 de muros y sello de ventanería en edificio.
+                    Contacto. María Andrea Giraldo Celular (311) 387-2087.</li><br>
+                <li>WORLD TRADE CENTER. Constructora Colpatria. Suministro e instalación de 500 M2 de
+                    Vulkem peatonal en losa de cubierta piso 6 WTC.</li><br>
+                <li>CONSTRUCTORA BALMORAL DE SANTA TERESITA. Suministro e instalación de sistema
+                    Sikalastic 612 en Losa de cubierta destinada para área de juego de niños Total proyecto 360 M2.
+                    Contacto. Arq. Janeth Sáenz (315) 557-5288.</li><br>
+                <li>EDIFICIO ATELIER -Enlucimiento de fachadas y tratamiento en fachada de piedra. Area Total 4.200 M2.
+                    Contacto: Cielo Perea de Ackelsberg. (311) 354-4778</li><br>
+                <li>CONJUNTO RESIDENCIAL VILLA DEL SOL SECTOR III. Enlucimiento de fachadas de 14 torres de apartamento,
+                    para un total de 13.300 M2.</li><br>
+                <li>EDIFICIO LUZ ANGELA. Suministro e instalación de sistema Sikalastic 612 en Losa de cubierta
+                    destinada para área de juego de niños Total proyecto 55 M2. Contacto. Mario García (316) 694-9844.
+                </li><br>
+                <li>LV ESTRUCTURAS – UNIÓN TEMPORAL ARBOLEDA. Impermeabilización piscina, suministro e instalación
+                    enchape en piscina. Contacto. Arq. Julián Jiménez. (312) 849-5519.</li><br>
+                <li>LV ESTRUCTURAS – UNIÓN TEMPORAL ARBOLEDA. Impermeabilización Losas de cubierta (180 M2 con sistema
+                    Sikafill Power. Contacto. Arq. Julián Jiménez. (312) 849-5519.</li><br>
+                <li>Laboratorio LAVERLAM. Instalación de 2500 M2 de pisos epoxicos en diferentes áreas de la planta de
+                    producción de la Cra. 5 con 47 Cali. Contacto. Arq. Cristian Zorrilla.</li><br>
+                <li>Laboratorio LAVERLAM. Instalación de 60 M2 de pisos epoxicos con barrera de Vapor en área de
+                    Incubadora. Contacto. Arq. Cristian Zorrilla.</li><br>
+                <li>CONSTRUCTORA BALMORAL SAS. Impermeabilización de dos Piscinas. Contacto. Esteban Bonilla – Director
+                    de Obra. (317) 667-2621.</li><br>
+                <li>CONSTRUCTORA BALMORAL SAS. Impermeabilización de 450 M2 de Losa con el Sistema igasol + SikaFelt.
+                    Contacto. Esteban Bonilla – Director de Obra. (317) 667-2621.</li><br>
+                <li>CONSTRUCTORA BALMORAL SAS. Impermeabilización de 450 M2 de Losa Con el Sistema
+                    Manto asfáltico 3MM con Foil de alumio. Contacto. Esteban Bonilla – Director de Obra. (317)
+                    667-2621.</li><br>
+                <li>CONSTRUCTORA MECON S.A. Impermeabilización de tres (3) piscinas en el Proyecto Tierra Alta.
+                    Contacto. Miguel Nuñez. Director de Obra. (315) 849-7184</li><br>
+                <li>CONSTRUCTORA MECON S.A. Impermeabilización de 200 M2 de Estructuras enterradas. Contacto. Miguel
+                    Nuñez. Director de Obra. (315) 849-7184.</li><br>
+                <li>CONSTRUCTORA MECON S.A. Suministro e instalación juntas de dilatación. Contacto. Miguel Nuñez.
+                    Director de Obra. (315) 849-7184.</li><br>
+                <li>CONJUNTO RESIDENCIAL VALPARAISO - Impermeabilización de Tanque de agua potable de
+                    35M3.</li><br>
+                <li>CONJUNTO RESIDENCIAL TORRES COMFANDI CONJUNTO O-
+                    Enlucimiento de fachadas enladrillo. Impermeabilización de 1.500 M2 de losa.
+                    Impermeabilización Tanque de agua potable de 110M3.</li><br>
+                <li>EDIFICIO RIO CLARO - Impermeabilización de Losa de cubierta con el Sistema IGASOL-SIKAFelt-Alumol.
+                    Enlucimiento de entrada de acceso vehicular.</li><br>
+                <li>CONJUNTO RESIDENCIAL VILLA DEL SOL SECTOR I Y IV - Impermeabilización de losa sobre apartamento
+                    504D. Contacto: Dra. Deyanira Moreno. (316) 295-9852.</li><br>
+                <li>CONJUNTO RESIDENCIAL VILLA DEL SOL SECTOR I Y IV - Impermeabilización de 2 Tanques
+                    de Almacenamiento de Agua Potable de 144M3 y de 96M3. Contacto: Dra. Deyanira Moreno. (316)
+                    295-9852.</li><br>
+                <li>IGLESIA DEL PERPETUO SOCORRO DEL MUNICIPIO DE CALIMA
+                    DARIÉN. Enlucimiento de fachadas de la iglesia, Suministro e instalación de vitrales. Area Total:
+                    3.500 M2. Contacto. Padre Robinson Sánchez. (317) 562-5385.</li><br>
+                <li>CR GUAYACANES 3 -Demolición y reconstrucción de 2200 M2 de Mortero. Suministro e
+                    instalación de Manto asiático Foil de Aluminio (Impermeabilización de Losas de 8 Torres de
+                    apartamentos. Contacto: Cielo Otero (312) 256-2090.</li><br>
+                <li>CONJUNTO RESIDENCIAL PORTÓN DEL PARQUE. Mantenimiento de 1350 M2 de manto asfáltico. Contacto. Dra.
+                    Liliana González. (318) 291-2538.</li><br>
+                <li>EDIFICIO ATELIER –Impermeabilización de Tanque de Almacenamiento de Agua Potable de 45M3. Contacto:
+                    Cielo Perea de Ackelsberg. (311) 354-4778.</li>
             </ul>
 
 
             <div>
-                <h2 style="page-break-before: always">NUESTRAS CERTIFICACIONES</h2><br>
-                <div class="row">
-                    <div>
-                        <img src="{% static 'generateCot/filesModelCot/sUno.png' %}" alt="">
-                    </div>
-                    <div>
-                        <img src="{% static 'generateCot/filesModelCot/sDos.png' %}" alt="">
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div>
-                        <img src="{% static 'generateCot/filesModelCot/sTres.png' %}" alt="">
-                    </div>
-                    <div>
-                        <img src="{% static 'generateCot/filesModelCot/sCuatro.png' %}" alt="">
-                    </div>
+                <h3 class="textGrey" style="page-break-before: always">NUESTRAS CERTIFICACIONES</h3><br>
+                <div class="tbleDos" style="width: 100%;">
+                    <table style="width: 100%;">
+                        <tr>
+                            <td style="width: 50%; height: auto;">
+                                <img style="width: 100%;height: auto;"
+                                    src="{% static 'generateCot/filesModelCot/sUno.png' %}" alt="">
+                            </td>
+                            <td style="width: 50%; height: auto;">
+                                <img style="width: 100%;height: auto;"
+                                    src="{% static 'generateCot/filesModelCot/sDos.png' %}" alt="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 50%; height: auto;">
+                                <img style="width: 100%;height: auto;"
+                                    src="{% static 'generateCot/filesModelCot/sTres.png' %}" alt="">
+                            </td>
+                            <td style="width: 50%; height: auto;">
+                                <img style="width: 100%;height: auto;"
+                                    src="{% static 'generateCot/filesModelCot/sCuatro.png' %}" alt="">
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </div>
-
-
         </div>
-
     </div>
-
-
 </body>
 
 </html>

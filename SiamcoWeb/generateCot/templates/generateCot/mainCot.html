@@ -193,6 +193,7 @@
 </div>
 <hr color="silver">
 </div>
+
 <div class="container">
 
     <div class="row">
@@ -204,20 +205,49 @@
 
             </div>
         </div>
-    </div><br><br>
-    
-    <form action="{% url 'modelCot' %}" method="POST" id="f_generateCot" value= "">
+    </div>
+    <br>
+    <div class="row">
+        <a class="nav-link active" href="#" data-toggle="modal" data-target="#mModal"><u>Añadir Nota</u></a>
+        <!-- Modal -->
+        <div data-backdrop=static class="modal fade" id="mModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="mModalLabel">Añade una Nota</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <textarea id="textNote" style="width: 100%; height: 40%;">
+
+                        </textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" onclick='$("#mModal").modal("hide")' class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br>
+
+
+    <form action="{% url 'modelCot' %}" method="POST" id="f_generateCot" value="">
         {% csrf_token %}
         <div class="row">
             <input type="button" class="btn btn-warning" id="bGenerate" name="bGenerate" value="Generar"
                 urlDestinity="{% url 'genCot' %}">
         </div>
-        
+
     </form>
-    
+
     <hr>
     <div id="pdfCont" class="container">
-        
+
     </div>
 </div>
 
