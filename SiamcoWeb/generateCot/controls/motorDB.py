@@ -83,6 +83,7 @@ class motor_pg():
             text = self.getStatement("""
                         select pdftemplate from cotizaciones where id_user = %s and downloaded = False;
                         """, (str(idUser))).fetchone()
+            print("")
             return text[0]
         except Exception as error:
             print("Error get text pdf : ", error)
@@ -91,15 +92,15 @@ class motor_pg():
         try :
             self.executeStatement("update cotizaciones set downloaded = %s",('1'))
         except Exception as error:
-            print("no se pudo actualizar la descarga. eror : ", error)                                        
+            print("no se pudo actualizar la descarga. eror : ", error)
+
+    def getImgEncabezado(self, idImg):
+        return self.getStatement("select img from imagesDoc where id_img = %s", (idImg,))                                  
+
 """
 m = motor_pg()
 
-st = "select id_unid from measurement_units where code_dian = 'MTK'"
-dats = ("admuno", "aduno")
-stUno = 'select * from users '
-
-m.getActivitiesForTable()
+print("img : ", m.getImgEncabezado('1').fetchall()[0][0] )
 
 m.closeDB()
 """

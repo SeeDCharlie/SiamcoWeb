@@ -18,6 +18,7 @@ import os.path
 from weasyprint import html
 
 
+
 def genCot(request):
     print("valor ajax : ", bool(request.is_ajax()),
           "\nvalor post : ", request.method)
@@ -58,7 +59,7 @@ def docCotHtml(request):
         mot_db.commit()
         print("username : ", id_user, " ", username, "\ntemplateText : \n")
         resp = render_to_pdf_response(request, 'generateCot/docPdf.html', {'content':textPdf},
-                                      download_filename='cot.pdf', content_type='application/pdf')
+                                      download_filename='cot.pdf', base_url=request.build_absolute_uri() )
         mot_db.closeDB()
         return resp 
     print("pal loggin")

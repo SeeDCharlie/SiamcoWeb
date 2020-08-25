@@ -1,4 +1,6 @@
 --create all tables
+
+--------------tabla de unidades de medida
 create table if not exists measurement_units(
 	id_unid					serial,
 	description				varchar(50),
@@ -6,7 +8,7 @@ create table if not exists measurement_units(
 	symbol					varchar(3),
 	primary key (id_unid)
 );
-
+--------------------- tabla de actividades
 create table if not exists activities(
 	cod					varchar(4),
 	description			varchar(500),
