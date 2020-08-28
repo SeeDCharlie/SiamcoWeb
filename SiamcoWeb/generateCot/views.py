@@ -35,6 +35,8 @@ def genCot(request):
         datsCot['idAutor'] = mot_db.getIdUser(datsCot['username'])
         pdf = render_to_string('generateCot/modelCot.html', datsCot)
         datsCot.update({'pdfTemplate': pdf, 'down': False })
+        datsCot['dateToday'] = datsCot['dateToday'].split('/')
+        datsCot['dateToday'] = datsCot['dateToday'][2] + '-' + datsCot['dateToday'][1] + '-' + datsCot['dateToday'][0]
         #print("datscot de mierda : ", datsCot)
         mot_db.saveQuotation(datsCot)
         mot_db.commit()
@@ -59,7 +61,7 @@ def docCotHtml(request):
         mot_db.commit()
         print("username : ", id_user, " ", username, "\ntemplateText : \n")
         resp = render_to_pdf_response(request, 'generateCot/docPdf.html', {'content':textPdf},
-                                      download_filename='cot.pdf', base_url=request.build_absolute_uri() )
+                                      download_filename='cotizacion.pdf', base_url=request.build_absolute_uri() )
         mot_db.closeDB()
         return resp 
     print("pal loggin")
