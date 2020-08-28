@@ -27,7 +27,6 @@ $(function () {
             location.reload();
           }
           else{
-            alert("submit form!!")
             $('#f_loggin').submit();
 
           }

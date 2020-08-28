@@ -20,16 +20,9 @@ from weasyprint import html
 
 
 def genCot(request):
-    print("valor ajax : ", bool(request.is_ajax()),
-          "\nvalor post : ", request.method)
-    datsCot = {'otherStyle': "*{margin:4px;}",
-                   'textCot': '<h1>alv! el texto</h1>', 'customerName': 'seed'}
-    #resp = render_to_pdf_response(request, 'generateCot/modelCot.html', datsCot,
-    #                                  download_filename='cot.pdf', content_type='application/pdf')
-    
+    datsCot = {'textCot': '<h1>alv! el texto</h1>', 'customerName': 'seed'}
     if request.is_ajax() and request.method == 'POST':
         mot_db = motor_pg()
-        print("method ajax rendering templates!!")
         dDos = json.loads(request.POST.get('datsCot'))
         datsCot.update(dDos)      
         datsCot['idAutor'] = mot_db.getIdUser(datsCot['username'])
@@ -37,36 +30,26 @@ def genCot(request):
         datsCot.update({'pdfTemplate': pdf, 'down': False })
         datsCot['dateToday'] = datsCot['dateToday'].split('/')
         datsCot['dateToday'] = datsCot['dateToday'][2] + '-' + datsCot['dateToday'][1] + '-' + datsCot['dateToday'][0]
-        #print("datscot de mierda : ", datsCot)
         mot_db.saveQuotation(datsCot)
         mot_db.commit()
         mot_db.closeDB()
-        #print("dats : ", datsCot)
         return JsonResponse({'isRender': True, 'username':datsCot['username'] })
     else :
-        print("no se reconocio la peticion ajax")
         return redirect('homeLoggin')
 
 def docCotHtml(request):
-    print("docCotHtml--> valor ajax : ", bool(request.is_ajax()),
-          "\nvalor post : ", request.method)
     if request.method == 'POST' and not request.is_ajax():
-        print("method no ajax !!")
         mot_db = motor_pg()
         username = request.POST.get('username')
-        print("method no ajax !! ",username )
         id_user = mot_db.getIdUser(username)  
         textPdf = mot_db.getTextPdf(id_user)
         mot_db.updatePdfUser(id_user)
         mot_db.commit()
-        print("username : ", id_user, " ", username, "\ntemplateText : \n")
         resp = render_to_pdf_response(request, 'generateCot/docPdf.html', {'content':textPdf},
-                                      download_filename='cotizacion.pdf', base_url=request.build_absolute_uri() )
+                                      download_filename='%s_SiamcoCot.pdf'%username, base_url=request.build_absolute_uri() )
         mot_db.closeDB()
         return resp 
-    print("pal loggin")
     return redirect('homeLoggin')
-
 
 
 def homeLoggin(request):
@@ -84,13 +67,16 @@ def mainCot(request):
                     'colsUno': colsUno,
                     'colsDos': colsDos
                     }
+    print("metodo mainCot() : ")
     if request.method == 'POST' and request.is_ajax():
+        print("metodo ajax <---------")
         username = request.POST.get('username')
         password = request.POST.get('userpass')
         captchaKey = request.POST.get('captchaCheck')
         capt_url = "https://google.com/recaptcha/api/siteverify"
         cap_data = {'secret': settings.CAPTCHA_SECRET_KEY,
                     'response': captchaKey}
+        
         cap_server_response = requests.post(url=capt_url, data=cap_data)
         capJson = json.loads(cap_server_response.text)
         capJson['userValidate'] = False
@@ -99,17 +85,18 @@ def mainCot(request):
         mot.closeDB()       
         return JsonResponse(capJson)
     else:
+
         username = request.POST.get('Username')
         password = request.POST.get('Userpass')
         r = mot.existUser(username, password)
         mot.closeDB()
         if request.method == 'POST' and not request.is_ajax() and r != False:
+            print("metodo post <---------")
             dictTemplate['fname'] = r[0]
             dictTemplate['lname'] = r[1]
             dictTemplate['username'] = username
             return render(request, 'generateCot/mainCot.html', dictTemplate)
         else:
             return redirect('homeLoggin')
-    
     mot.closeDB()
-    return redirect('homoLoggin')
+    return redirect('homeLoggin')

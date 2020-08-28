@@ -4,7 +4,6 @@ $(document).on('click', '#bGenerate', function (e) {
     e.preventDefault(e);
     var date = new Date();
     date =  date.getDate().toString().padStart(2,'0') + '/' + (date.getMonth() + 1 ).toString().padStart(2,'0') + '/' + date.getFullYear() ;
-    alert("la fecha es : " + date);
     durationW = $("#dProject").val();
     if (!$.isNumeric(durationW)) {
         durationW = 0;

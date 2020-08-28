@@ -7,13 +7,18 @@ body {
 
 }
 @page {
-    
+
     @bottom-right {
         content: "Pagina "counter(page) " de "counter(pages);
         
     }
-
 }
+/*@media print {
+    html, body {
+      width: 210mm;
+      height: 297mm;
+    }
+}*/
 
 .tUno{
     font-family: monserrat;
