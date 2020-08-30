@@ -18,17 +18,17 @@ $(function () {
       success: function (data) {
 
         if(!data.success){
-          alert("Por Favor Marque la Caja Captha!");
-          location.reload();
+          $('#mAtention').modal();
+          grecaptcha.reset();
         }
         else{
           if(!data.userValidate){
-            alert("Usuario o Contraseña Incorrectos");
-            location.reload();
+            $('#mError').modal();
+            $("#userpass").val('');
+            grecaptcha.reset();
           }
           else{
             $('#f_loggin').submit();
-
           }
         }
         

@@ -52,14 +52,15 @@
 				<form action="{% url 'mainCot' %}" method="POST" class="login100-form validate-form " id="f_loggin">
 					{% csrf_token %}
 					<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
-						<span class="label-input100">Username</span>
-						<input class="input100" type="text" id="username" name="Username" placeholder="Enter username">
+						<span class="label-input100">Usuario</span>
+						<input class="input100" type="text" id="username" name="Username"
+							placeholder="Nombre de usuario">
 						<span class="focus-input100"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-18" data-validate="Password is required">
-						<span class="label-input100">Password</span>
-						<input class="input100" type="password" id="userpass" name="Userpass" placeholder="Enter password">
+						<span class="label-input100">Contraseña</span>
+						<input class="input100" type="password" id="userpass" name="Userpass" placeholder="Contraseña">
 						<span class="focus-input100"></span>
 					</div>
 
@@ -67,13 +68,13 @@
 						<div class="contact100-form-checkbox">
 							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
 							<label class="label-checkbox100" for="ckb1">
-								Remember me
+								Recordarme
 							</label>
 						</div>
 
 						<div>
 							<a href="#" class="txt1">
-								Forgot Password?
+								Olvido su contraseña?
 							</a>
 						</div>
 					</div>
@@ -83,7 +84,8 @@
 					</div>
 
 					<div class="container-login100-form-btn">
-						<button type="button" class="login100-form-btn" id="boton_entrar" urlDestinity = "{% url 'mainCot' %}">
+						<button type="button" class="login100-form-btn" id="boton_entrar"
+							urlDestinity="{% url 'mainCot' %}">
 							Login
 						</button>
 					</div>
@@ -94,7 +96,46 @@
 		</div>
 	</div>
 
-
+	<div class="modal fade" id="mError" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true" data-backdrop='static' >
+        <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
+            <!--Content-->
+            <div class="modal-content text-center">
+                <!--Header-->
+                <div class="modal-header d-flex justify-content-center" style="background-color: red;">
+                    <h4 class="heading" style="color: seashell;">ERROR!</h4>
+                </div>
+                <div class="modal-body">
+                    <p style="color: red;"><strong>Usuario o Contraseña Incorrectos!</strong> </p>
+                  </div>
+                <!--Footer-->
+                <div class="modal-footer flex-center" style="align-content: center;">
+                    <button type="button" class="btn  btn-danger" data-dismiss="modal" style=" color: seashell;">Ok!</button>
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+	</div>
+	<div class="modal fade" id="mAtention" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true" data-backdrop='static' >
+        <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
+            <!--Content-->
+            <div class="modal-content text-center">
+                <!--Header-->
+                <div class="modal-header d-flex justify-content-center" style="background-color: rgb(255, 217, 0);">
+                    <h4 class="heading" style="color: seashell;">Atención!</h4>
+                </div>
+                <div class="modal-body">
+                    <p style="color: rgb(255, 217, 0);"><strong>Por Favor Marque el Captcha!</strong> </p>
+                  </div>
+                <!--Footer-->
+                <div class="modal-footer flex-center" style="align-content: center;">
+                    <button type="button" class="btn  btn-danger waves-effect" data-dismiss="modal" style="background-color: rgb(255, 217, 0); color: seashell;">Ok!</button>
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
 
 	<!--===============================================================================================-->
 	<script src="{% static 'generateCot/loggin/vendor/jquery/jquery-3.2.1.min.js' %}"></script>

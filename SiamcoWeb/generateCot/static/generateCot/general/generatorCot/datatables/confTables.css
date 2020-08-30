@@ -12,7 +12,7 @@ bottom: .5em;
 }
 
 .tabledos {
-    height: 450px;
+    height: 400px;
     overflow: auto;
   }
 #tabledos thead tr th {

@@ -39,7 +39,8 @@ function changeValueCot() {
 }
 
 $(document).ready(function () {
-
+    $('.tAdd').toast({delay: 1000});
+    $('.tRem').toast({delay: 1000});
     new FroalaEditor("#editText", {
         fullPage: true,
     });
@@ -57,17 +58,18 @@ $(document).on('click', '#tableuno button', function (e) {
         $("#v" + buttonVal).val()
     ];
     if (!$.isNumeric(dats[2]) || !$.isNumeric(dats[3])) {
-        alert("Cantidad o Valor incorrectos : Por favor digite numeros correctos");
+        $('#modalAlert').modal();
     }
     else {
         appendRow(builRow(dats));
         changeValueCot();
+        $('.tAdd p').html('Actividad <strong>'+ buttonVal + '</strong> Añadida');
+        $('.tAdd').toast('show');
     }
-
 });
 
 $(document).on('click', '.tabledos button', function () {
-    //alert("se eliminara : " + $(this).parent().parent().text());
+    $('.tRem').toast('show');
     $(this).parent().parent().remove();
     changeValueCot();
 });

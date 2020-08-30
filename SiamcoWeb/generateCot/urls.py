@@ -7,5 +7,6 @@ urlpatterns = [
     path('generate-cot', views.mainCot, name = 'mainCot'),
     path('predocument', views.genCot, name = 'genCot'),
     path('document', views.docCotHtml, name = 'modelCot'),
+    path('<str:username>/manage_activities', views.manageActivities, name = 'manageActivities'),
     #ath('document', views.HelloPDFView.as_view(), name = 'modelCot'),
 ]

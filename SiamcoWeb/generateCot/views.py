@@ -18,37 +18,38 @@ import os.path
 from weasyprint import html
 
 
-
 def genCot(request):
     datsCot = {'textCot': '<h1>alv! el texto</h1>', 'customerName': 'seed'}
     if request.is_ajax() and request.method == 'POST':
         mot_db = motor_pg()
         dDos = json.loads(request.POST.get('datsCot'))
-        datsCot.update(dDos)      
+        datsCot.update(dDos)
         datsCot['idAutor'] = mot_db.getIdUser(datsCot['username'])
         pdf = render_to_string('generateCot/modelCot.html', datsCot)
-        datsCot.update({'pdfTemplate': pdf, 'down': False })
+        datsCot.update({'pdfTemplate': pdf, 'down': False})
         datsCot['dateToday'] = datsCot['dateToday'].split('/')
-        datsCot['dateToday'] = datsCot['dateToday'][2] + '-' + datsCot['dateToday'][1] + '-' + datsCot['dateToday'][0]
+        datsCot['dateToday'] = datsCot['dateToday'][2] + '-' + \
+            datsCot['dateToday'][1] + '-' + datsCot['dateToday'][0]
         mot_db.saveQuotation(datsCot)
         mot_db.commit()
         mot_db.closeDB()
-        return JsonResponse({'isRender': True, 'username':datsCot['username'] })
-    else :
+        return JsonResponse({'isRender': True, 'username': datsCot['username']})
+    else:
         return redirect('homeLoggin')
+
 
 def docCotHtml(request):
     if request.method == 'POST' and not request.is_ajax():
         mot_db = motor_pg()
         username = request.POST.get('username')
-        id_user = mot_db.getIdUser(username)  
+        id_user = mot_db.getIdUser(username)
         textPdf = mot_db.getTextPdf(id_user)
         mot_db.updatePdfUser(id_user)
         mot_db.commit()
-        resp = render_to_pdf_response(request, 'generateCot/docPdf.html', {'content':textPdf},
-                                      download_filename='%s_SiamcoCot.pdf'%username, base_url=request.build_absolute_uri() )
+        resp = render_to_pdf_response(request, 'generateCot/docPdf.html', {'content': textPdf},
+                                      download_filename='%s_SiamcoCot.pdf' % username, base_url=request.build_absolute_uri())
         mot_db.closeDB()
-        return resp 
+        return resp
     return redirect('homeLoggin')
 
 
@@ -58,7 +59,8 @@ def homeLoggin(request):
 
     return render(request, 'generateCot/homeLoggin.html', dicTemplate)
 
-def mainCot(request):
+
+def mainCot(request, fName='', lName='', usrName=''):
     mot = motor_pg()
     colsUno = ['Cod', 'Descripcion', 'Und', 'Valor Und', 'Cant', '']
     colsDos = ['Actividad', 'Und', 'Cant', 'Valor Und', 'Valor Total', '']
@@ -76,13 +78,13 @@ def mainCot(request):
         capt_url = "https://google.com/recaptcha/api/siteverify"
         cap_data = {'secret': settings.CAPTCHA_SECRET_KEY,
                     'response': captchaKey}
-        
+
         cap_server_response = requests.post(url=capt_url, data=cap_data)
         capJson = json.loads(cap_server_response.text)
         capJson['userValidate'] = False
         r = mot.existUser(username, password)
         capJson['userValidate'] = r
-        mot.closeDB()       
+        mot.closeDB()
         return JsonResponse(capJson)
     else:
 
@@ -98,5 +100,35 @@ def mainCot(request):
             return render(request, 'generateCot/mainCot.html', dictTemplate)
         else:
             return redirect('homeLoggin')
+    if request.method == 'GET' and usrName != '':
+        dictTemplate['fname'] = fName
+        dictTemplate['lname'] = lName
+        dictTemplate['username'] = usrName
+        return render(request, 'generateCot/mainCot.html', dictTemplate)
     mot.closeDB()
     return redirect('homeLoggin')
+
+
+def manageActivities(request, username=''):
+    mot = motor_pg()
+    if username != '':
+        print("user name : %s" % username)
+        existUsr = mot.getStatement(
+            "select fname, lname from users where username = %s", (username,)).fetchall()
+        listAct = mot.getActivitiesForTable()
+        mot.closeDB()
+        if existUsr != None:
+            dicContex = {
+                'fname': existUsr[0][0],
+                'lname': existUsr[0][1],
+                'username': username,
+                'cols': ['', 'Cod', 'Descripcion', 'Und', 'Valor Und'],
+                'lActivities': listAct
+            }
+            return render(request, 'generateCot/manageActivities.html', dicContex)
+        else:
+            mot.closeDB()
+            return redirect('homeLoggin')
+    else:
+        mot.closeDB()
+        return redirect('homeLoggin')
