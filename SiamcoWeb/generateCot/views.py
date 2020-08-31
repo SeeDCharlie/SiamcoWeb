@@ -154,3 +154,14 @@ def saveActiviti(request):
             pass
         mot.closeDB()
         return JsonResponse(dicRes)
+
+def deleteActis(request):
+
+    if request.method == 'POST' and request.is_ajax():
+        mot = motor_pg()
+        idxs = json.loads(request.POST.get('dats'))
+        print("actividades a eliminar : ", idxs)
+        if not mot.deleteRegisters(idxs,'activities', 'cod'):
+            return JsonResponse({'echo': False, 'cant': len(idxs)})
+        else:
+            return JsonResponse({'echo': True})

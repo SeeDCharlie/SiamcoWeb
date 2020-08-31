@@ -55,3 +55,56 @@ $(document).on('click', '.btnSave', function (e) {
 $('.btnAdd').on('click', function (e) {
     $('#modalAdd').modal();
 });
+
+
+$('.btnDelete').on('click', function () {
+    var actis = getChecked();
+    if (actis.length == 0) {
+        showModalError('Ninguna Actividad Seleccionada!');
+    }
+    else {
+        $.ajax({
+            url: $(this).attr('url'),
+            data: {
+                dats: JSON.stringify(actis),
+                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                action: 'post'
+            },
+            type: 'POST',
+            dataType: 'json',
+            success: function (data) {
+                if (data.echo) {
+                    showModalSucces('Se Eliminaron ' + data.cant + 'Registros');
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1000);
+                }
+                else {
+                    alert("no se elimino nada");
+                }
+            },
+            error: function () {
+                alert("no paso nada con el ajax!!");
+            }
+        });
+    }
+
+});
+
+function getChecked() {
+    var checkeds = [];
+    $('#tableuno input:checked').each(function () {
+        checkeds.push($(this).val());
+    });
+    return checkeds;
+}
+
+function showModalSucces(msj) {
+    $('#modalSucces p').html(msj);
+    $('#modalSucces').modal();
+}
+
+function showModalError(msj) {
+    $('#modalAlert p').html(msj);
+    $('#modalAlert').modal();
+}

@@ -12,3 +12,5 @@ delete from cotizaciones
 where id_cot = 3;
 commit;
 select cod from activities where cod =(select max(cod) from activities);
+
+delete from activities where cod = '182';

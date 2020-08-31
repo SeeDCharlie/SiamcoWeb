@@ -1,4 +1,5 @@
 import psycopg2
+from psycopg2 import sql
 
 
 class motor_pg():
@@ -57,24 +58,24 @@ class motor_pg():
         return self.getStatement(st).fetchall()
 
     def saveQuotation(self, dicDats):
-        try :
+        try:
             self.cursor.execute("""
                             insert into cotizaciones(customerName,email,workplace,workAddress,
                             projectName,proNumber,durationWork,unitDuration,id_user,dateCreate,pdfTemplate,downloaded)
                             values(%(customerName)s,%(customerEmail)s,%(placeName)s,%(placeAddress)s,
                             %(projectName)s,%(proposalNumber)s,%(durationWork)s,%(unitDuration)s,
                             %(idAutor)s,%(dateToday)s,%(pdfTemplate)s,%(down)s);
-                            """,dicDats)
+                            """, dicDats)
             self.commit
             return True
-        except Exception as error :
+        except Exception as error:
             print("error al subir el pedf a la db", error)
-            return False    
+            return False
 
     def getIdUser(self, username):
         id_user = self.getStatement(
-                                    "select id_user from users   where username = %s",(str(username),)
-                                    ).fetchone()
+            "select id_user from users   where username = %s", (str(username),)
+        ).fetchone()
         print("id_user encontrado : ", id_user[0])
         return id_user[0]
 
@@ -87,20 +88,35 @@ class motor_pg():
             return text[0]
         except Exception as error:
             print("Error get text pdf : ", error)
-    
+
     def updatePdfUser(self, id_user):
-        try :
-            self.executeStatement("update cotizaciones set downloaded = %s",('1'))
+        try:
+            self.executeStatement(
+                "update cotizaciones set downloaded = %s", ('1'))
         except Exception as error:
             print("no se pudo actualizar la descarga. eror : ", error)
 
     def getImgEncabezado(self, idImg):
-        return self.getStatement("select img from imagesDoc where id_img = %s", (idImg,)) 
+        return self.getStatement("select img from imagesDoc where id_img = %s", (idImg,))
 
     def getNewIdActi(self):
-        idx = self.getStatement('select cod from activities where cod =(select max(cod) from activities)').fetchall()[0][0]                            
+        idx = self.getStatement(
+            'select cod from activities where cod =(select max(cod) from activities)').fetchall()[0][0]
         idx = 'S' + str(int(idx[1:])+1)
         return idx
+
+    def deleteRegisters(self, idxs, tablename, nameid):
+        try:
+            for idx in idxs:
+                self.executeStatement(sql.SQL("delete from {} where %s = %s")
+                                      .format(sql.Identifier(tablename)), ( str(nameid), str(idx)))
+                self.commit()
+            return True
+        except Exception as error:
+            print("no se pudo eliminar de la tabla %s, error : %s" %
+                  (tablename, str(error)))
+            return False
+
 
 """m = motor_pg()
 
