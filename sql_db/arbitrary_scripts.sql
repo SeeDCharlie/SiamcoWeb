@@ -11,3 +11,4 @@ values ('Unidad Global','asas','asasas','asdasd','asdasd','asas', );
 delete from cotizaciones 
 where id_cot = 3;
 commit;
+select cod from activities where cod =(select max(cod) from activities);

@@ -95,12 +95,15 @@ class motor_pg():
             print("no se pudo actualizar la descarga. eror : ", error)
 
     def getImgEncabezado(self, idImg):
-        return self.getStatement("select img from imagesDoc where id_img = %s", (idImg,))                                  
+        return self.getStatement("select img from imagesDoc where id_img = %s", (idImg,)) 
 
-"""
-m = motor_pg()
+    def getNewIdActi(self):
+        idx = self.getStatement('select cod from activities where cod =(select max(cod) from activities)').fetchall()[0][0]                            
+        idx = 'S' + str(int(idx[1:])+1)
+        return idx
 
-print("img : ", m.getImgEncabezado('1').fetchall()[0][0] )
+"""m = motor_pg()
 
-m.closeDB()
-"""
+print("img : ", m.getNewIdActi() )
+
+m.closeDB()"""

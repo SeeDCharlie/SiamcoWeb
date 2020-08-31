@@ -18,15 +18,15 @@
         </div>
         <div class="col-12 col-sm-6">
 
-            <div class="dropdown" style="position: absolute; bottom: 10%; right: 10%;">
-                <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu2"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="dropdown" style="position: absolute; bottom: 10%; right: 5%;">
+                <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
                     Opciones
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <button class="dropdown-item" type="button">Agregar</button>
-                    <button class="dropdown-item" type="button">Editar</button>
-                    <button class="dropdown-item" type="button">Eliminar</button>
+                    <button class="dropdown-item btnAdd" type="button">Agregar</button>
+                    <button class="dropdown-item btnEdit" type="button">Editar</button>
+                    <button class="dropdown-item btnDelete" type="button">Eliminar</button>
                 </div>
             </div>
 
@@ -34,7 +34,7 @@
     </div>
 
     <!--------------------------------------------------------------------------->
-    <div class="row">
+    <div class="row-col-12">
         <table id="tableuno" class="table table-striped table-sm" cellspacing="0" width="100%">
             <thead>
                 <tr>
@@ -47,8 +47,8 @@
                 {% for dat in lActivities %}
                 <tr>
                     <td>
-                        <div >
-                            <input type="checkbox" >
+                        <div>
+                            <input type="checkbox">
                         </div>
                     </td>
                     {% for col in dat %}
@@ -64,6 +64,76 @@
     </div>
     <!--------------------------------------------------------------------------->
 </div>
+
+<div class="modal fade" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true" data-backdrop='static'>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Nueva Actividad</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row">
+                                <label style="text-align: left;" class="col-6" for="description"><strong>Descripcion</strong></label>
+                                <input class="col-6" type="text" class="form-control" id="description"
+                                    placeholder="Descripcion">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="row">
+                                <label class="col-6" for="lunds"><strong>Unidad de Medida</strong></label>
+                                <div class="col-6 form-inline d-flex md-form form-sm mt-2">
+                                    <input style="text-align: left;" list="unds" id="lunds" class="custom-select custom-select-sm" type="text"
+                                        placeholder="Unidad de Medida" aria-label="Search" width="100%" >
+                                    <datalist id="unds">
+                                        <option value="m"></option>
+                                        <option value="m²"></option>
+                                        <option value="m³"></option>
+                                        <option value="GL"></option>
+                                    </datalist>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12" >
+                            <div class="row" style="margin-top: 10px;">
+                                <label style="text-align: left;" class="col-6" for="valorund"><strong>Valor Unitario</strong></label>
+                                <input class="col-6" type="text" class="form-control" id="valorund" placeholder="Valor">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="toast tTres" style="position: absolute;top: 0; right: 0; z-index: 1;">
+                    <div class="toast-body" style="background-color: rgb(89, 236, 75, 0.5) !important;color: rgb(51, 50, 49);">
+                        Actividad Guardada!
+                    </div>
+                </div>
+                <div class="toast tUno" style="position: absolute; top: 0; right: 0; z-index: 1;">
+                    <div class="toast-body" style="background-color: rgb(252, 64, 0.5) !important;color: rgb(51, 50, 49);">
+                        Hay Campos Vacios. <br> Por Favor Llene Todos los Campos!
+                    </div>
+                </div>
+                <div class="toast tDos" style="position: absolute; top: 0; right: 0; z-index: 1;">
+                    <div class="toast-body" style="background-color: rgb(252, 64, 0.5) !important;color: rgb(51, 50, 49);">
+                        Valor Unitario Incorrecto. <br> Por Favor Digite Numeros Validos!
+                    </div>
+                </div>
+                {% csrf_token %}
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary btnSave" url = '{% url "saveActi" %}'>Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 {% endblock %}
 

@@ -132,3 +132,25 @@ def manageActivities(request, username=''):
     else:
         mot.closeDB()
         return redirect('homeLoggin')
+
+def saveActiviti(request):
+
+    if request.method == 'POST' and request.is_ajax() :
+        mot = motor_pg()
+        dicRes = {'save': False }
+        dats = json.loads(request.POST.get('dats')) 
+        try :
+            idx = mot.getNewIdActi()
+            print("datos : ", dats)
+            dats['und'] = mot.getStatement("select id_unid from measurement_units where symbol = %s", (dats['und'],)).fetchall()[0][0]
+            mot.executeStatement('insert into activities(cod, description, unit, valueunit) values(%s,%s,%s,%s)',
+                             (idx, dats['descrip'], dats['und'], dats['value']))
+            dicRes['save'] = True
+            mot.commit()
+            print("se guardo la actividad")
+        except Exception as error:
+            dicRes['save'] = False
+            print("no se pudo agregar la actividad, error: ", error)
+            pass
+        mot.closeDB()
+        return JsonResponse(dicRes)
