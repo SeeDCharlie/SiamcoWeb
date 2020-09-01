@@ -159,9 +159,10 @@ def deleteActis(request):
 
     if request.method == 'POST' and request.is_ajax():
         mot = motor_pg()
-        idxs = json.loads(request.POST.get('dats'))
-        print("actividades a eliminar : ", idxs)
+        idxs = list(json.loads(request.POST.get('dats')))
+        print("actividades a eliminar : ", idxs, "  ", len(idxs))
         if not mot.deleteRegisters(idxs,'activities', 'cod'):
+            print("actividades a eliminar : ", idxs, "  ", len(idxs))
             return JsonResponse({'echo': False, 'cant': len(idxs)})
         else:
             return JsonResponse({'echo': True})

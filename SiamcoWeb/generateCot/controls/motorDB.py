@@ -108,8 +108,9 @@ class motor_pg():
     def deleteRegisters(self, idxs, tablename, nameid):
         try:
             for idx in idxs:
-                self.executeStatement(sql.SQL("delete from {} where %s = %s")
-                                      .format(sql.Identifier(tablename)), ( str(nameid), str(idx)))
+                sql = "delete from {} where {} = ".format(tablename, nameid)
+                print("la pinche que no sirbe : ", sql )
+                self.executeStatement(sql + " %s ;", (idx, ) )
                 self.commit()
             return True
         except Exception as error:
