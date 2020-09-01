@@ -9,6 +9,10 @@ class motor_pg():
 
     def initConection(self):
         try:
+            """
+            DATABASE_URL = os.environ['DATABASE_URL']
+            self.connection  = psycopg2.connect(DATABASE_URL)
+            """
             self.connection = psycopg2.connect(
                 host="localhost", dbname="siamco_db", user="admseed", password="admseed777")
         except Exception as e:
@@ -109,7 +113,6 @@ class motor_pg():
         try:
             for idx in idxs:
                 sql = "delete from {} where {} = ".format(tablename, nameid)
-                print("la pinche que no sirbe : ", sql )
                 self.executeStatement(sql + " %s ;", (idx, ) )
                 self.commit()
             return True
@@ -117,7 +120,18 @@ class motor_pg():
             print("no se pudo eliminar de la tabla %s, error : %s" %
                   (tablename, str(error)))
             return False
-
+    
+    def updateTableActivities(self, dats ):
+        sql = 'update activities set description = %s, unit = %s, valueunit = %s where cod = %s '
+        try :
+            dats[1] = self.getStatement("select id_unid from measurement_units where symbol = %s", (dats[1],)).fetchall()[0]
+            print("dat und : ", dats[1])
+            self.cursor.execute(sql, dats )
+            self.commit()
+            return True
+        except Exception as error:
+            print("no se pudo actualizar la actividad, error : ", error)
+            return False
 
 """m = motor_pg()
 

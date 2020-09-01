@@ -9,6 +9,7 @@ urlpatterns = [
     path('document', views.docCotHtml, name = 'modelCot'),
     path('saveActi', views.saveActiviti, name = 'saveActi'),
     path('deleteActis', views.deleteActis, name = 'deleteActis'),
+    path('updateActi', views.updateActis, name = 'updateActi'),
     path('<str:username>/manage_activities', views.manageActivities, name = 'manageActivities'),
     #ath('document', views.HelloPDFView.as_view(), name = 'modelCot'),
 ]

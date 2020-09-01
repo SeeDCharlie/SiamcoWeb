@@ -13,20 +13,21 @@
 <div class="container-fluid">
     <!--------------------------------------------------------------------------->
     <div class="row">
-        <div class="col-12 col-sm-6">
-            <p class="display-4">Actividades</p>
-        </div>
+
+        <p class="display-4 col-12 col-sm-6" style="font-size: 35px;">Actividades</p>
+
         <div class="col-12 col-sm-6">
 
-            <div class="dropdown" style="position: absolute; bottom: 10%; right: 5%;">
+            <div class="dropdown" style="position: absolute; bottom: 10%; right: 15%;">
                 <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
+                    aria-haspopup="true" aria-expanded="false" style="width: 150%;">
                     Opciones
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                     <button class="dropdown-item btnAdd" type="button">Agregar</button>
                     <button class="dropdown-item btnEdit" type="button">Editar</button>
-                    <button class="dropdown-item btnDelete" url = '{% url "deleteActis" %}' type="button">Eliminar</button>
+                    <button class="dropdown-item btnDelete" url='{% url "deleteActis" %}'
+                        type="button">Eliminar</button>
                 </div>
             </div>
 
@@ -62,18 +63,17 @@
         </table>
 
     </div>
-    <!--------------------------------------------------------------------------->
+    
 </div>
-
+<!-------------------------------------------------------------------------------------------------->
+<!-------------------------------------------------------------------------------------------------->
+<!-------------------------------------------------------------------------------------------------->
 <div class="modal fade" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
     data-backdrop='static'>
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Nueva Actividad</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <h5 class="modal-title">Nueva Actividad</h5>
             </div>
             <div class="modal-body">
                 <div class="container">
@@ -82,8 +82,8 @@
                             <div class="row">
                                 <label style="text-align: left;" class="col-6"
                                     for="description"><strong>Descripcion</strong></label>
-                                <input class="col-6" type="text" class="form-control" id="description"
-                                    placeholder="Descripcion">
+                                <textarea class="col-6" type="text" class="form-control" id="description"
+                                    placeholder="Descripcion"></textarea>
                             </div>
                         </div>
                         <div class="col-12">
@@ -138,51 +138,108 @@
         </div>
     </div>
 </div>
-
+<!--------------------------------------------------------------------------------------------------->
 <div class="modal fade" id="modalAlert" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true" data-backdrop='static'>
     <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
-        <!--Content-->
         <div class="modal-content text-center">
-            <!--Header-->
             <div class="modal-header d-flex justify-content-center" style="background-color: red;">
                 <h4 class="heading" style="color: seashell;">ERROR!</h4>
             </div>
             <div class="modal-body">
                 <p style="color: red;">Ninguna Actividad Seleccionada!</p>
             </div>
-            <!--Footer-->
             <div class="modal-footer flex-center" style="align-content: center;">
                 <button type="button" class="btn  btn-danger waves-effect" data-dismiss="modal"
                     style="background-color: red; color: seashell;">Ok!</button>
             </div>
         </div>
-        <!--/.Content-->
     </div>
 </div>
-
+<!--------------------------------------------------------------------------------------------------->
 <div class="modal fade" id="modalSucces" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true" data-backdrop='static'>
     <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
-        <!--Content-->
         <div class="modal-content text-center">
-            <!--Header-->
             <div class="modal-header d-flex justify-content-center" style="background-color: rgb(30, 255, 0, 0.5)">
                 <h4 class="heading" style="color: seashell;">AVISO!</h4>
             </div>
             <div class="modal-body">
                 <p style="color: rgb(53, 216, 4);">Registros Eliminados Satisfactoriamente!</p>
             </div>
-            <!--Footer-->
             <div class="modal-footer flex-center" style="align-content: center;">
                 <button type="button" class="btn  btn-danger waves-effect" data-dismiss="modal"
                     style="background-color: rgb(30, 255, 0, 0.5); color: seashell;">Ok!</button>
             </div>
         </div>
-        <!--/.Content-->
     </div>
 </div>
-
+<!--------------------------------------------------------------------------------------------------->
+<div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
+    data-backdrop='static'>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" >Actividad</h5>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row">
+                                <label style="text-align: left;" class="col-6"
+                                    for="description"><strong>Descripcion</strong></label>
+                                <textarea class="col-6" type="text" class="form-control" id="eDescription"
+                                    placeholder="Descripcion"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="row">
+                                <label class="col-6" for="eLunds"><strong>Unidad de Medida</strong></label>
+                                <div class="col-6 form-inline d-flex md-form form-sm mt-2">
+                                    <input style="text-align: left;" list="unds" id="eLunds"
+                                        class="custom-select custom-select-sm" type="text"
+                                        placeholder="Unidad de Medida" aria-label="Search" width="100%">
+                                    <datalist id="unds">
+                                        <option value="m"></option>
+                                        <option value="m²"></option>
+                                        <option value="m³"></option>
+                                        <option value="GL"></option>
+                                    </datalist>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="row" style="margin-top: 10px;">
+                                <label style="text-align: left;" class="col-6" for="valorund"><strong>Valor
+                                        Unitario</strong></label>
+                                <input class="col-6" type="text" class="form-control" id="eValorund" placeholder="Valor">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="toast teDos" style="position: absolute;top: 0; right: 0; z-index: 1;">
+                    <div class="toast-body"
+                        style="background-color: rgb(89, 236, 75, 0.5) !important;color: rgb(51, 50, 49);">
+                        Registro Actualizado Correctamente!
+                    </div>
+                </div>
+                <div class="toast teUno" style="position: absolute; top: 0; right: 0; z-index: 1;">
+                    <div class="toast-body"
+                        style="background-color: rgb(252, 64, 0.5) !important;color: rgb(51, 50, 49);">
+                        <p></p>
+                    </div>
+                </div>
+                {% csrf_token %}
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary btnUpdate" url='{% url "updateActi" %}'>Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--------------------------------------------------------------------------------------------------->
 
 {% endblock %}
 

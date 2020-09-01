@@ -156,13 +156,24 @@ def saveActiviti(request):
         return JsonResponse(dicRes)
 
 def deleteActis(request):
+    if request.method == 'POST' and request.is_ajax():
+        mot = motor_pg()
+        idxs = json.loads(request.POST.get('dats'))
+        if not mot.deleteRegisters(idxs,'activities', 'cod'):
+            mot.closeDB()
+            return JsonResponse({'echo': False})
+        else:
+            mot.closeDB()
+            return JsonResponse({'echo': True, 'cant': len(idxs)})
+
+def updateActis(request):
 
     if request.method == 'POST' and request.is_ajax():
         mot = motor_pg()
-        idxs = list(json.loads(request.POST.get('dats')))
-        print("actividades a eliminar : ", idxs, "  ", len(idxs))
-        if not mot.deleteRegisters(idxs,'activities', 'cod'):
-            print("actividades a eliminar : ", idxs, "  ", len(idxs))
-            return JsonResponse({'echo': False, 'cant': len(idxs)})
-        else:
+        dats = json.loads(request.POST.get('dats'))
+        if mot.updateTableActivities(dats):
+            mot.closeDB()
             return JsonResponse({'echo': True})
+        else:
+            mot.closeDB()
+            return JsonResponse({'echo': False})
