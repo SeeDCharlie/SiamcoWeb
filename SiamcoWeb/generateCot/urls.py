@@ -4,7 +4,7 @@ from . import views
 
 urlpatterns = [
     path('', views.homeLoggin, name = 'homeLoggin'),
-    path('generate-cot', views.mainCot, name = 'mainCot'),
+    path('<usrName>/generate-cot', views.mainCot, name = 'mainCot'),
     path('predocument', views.genCot, name = 'genCot'),
     path('document', views.docCotHtml, name = 'modelCot'),
     path('saveActi', views.saveActiviti, name = 'saveActi'),

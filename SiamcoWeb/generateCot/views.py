@@ -37,7 +37,6 @@ def genCot(request):
     else:
         return redirect('homeLoggin')
 
-
 def docCotHtml(request):
     if request.method == 'POST' and not request.is_ajax():
         mot_db = motor_pg()
@@ -52,15 +51,11 @@ def docCotHtml(request):
         return resp
     return redirect('homeLoggin')
 
-
 def homeLoggin(request):
-
     dicTemplate = {'captcha_key': settings.CAPTCHA_WEB_KEY}
-
     return render(request, 'generateCot/homeLoggin.html', dicTemplate)
 
-
-def mainCot(request, fName='', lName='', usrName=''):
+def mainCot(request, usrName=''):
     mot = motor_pg()
     colsUno = ['Cod', 'Descripcion', 'Und', 'Valor Und', 'Cant', '']
     colsDos = ['Actividad', 'Und', 'Cant', 'Valor Und', 'Valor Total', '']
@@ -71,7 +66,6 @@ def mainCot(request, fName='', lName='', usrName=''):
                     }
     print("metodo mainCot() : ")
     if request.method == 'POST' and request.is_ajax():
-        print("metodo ajax <---------")
         username = request.POST.get('username')
         password = request.POST.get('userpass')
         captchaKey = request.POST.get('captchaCheck')
@@ -93,20 +87,23 @@ def mainCot(request, fName='', lName='', usrName=''):
         r = mot.existUser(username, password)
         mot.closeDB()
         if request.method == 'POST' and not request.is_ajax() and r != False:
-            print("metodo post <---------")
             dictTemplate['fname'] = r[0]
             dictTemplate['lname'] = r[1]
             dictTemplate['username'] = username
             return render(request, 'generateCot/mainCot.html', dictTemplate)
         else:
             return redirect('homeLoggin')
+
     if request.method == 'GET' and usrName != '':
-        dictTemplate['fname'] = fName
-        dictTemplate['lname'] = lName
+        usr = mot.getStatement(
+            "select fname, lname from users where username = %s", (usrName,)).fetchall()
+        dictTemplate['fname'] = usr[0][0]
+        dictTemplate['lname'] = usr[0][1]
         dictTemplate['username'] = usrName
         return render(request, 'generateCot/mainCot.html', dictTemplate)
-    mot.closeDB()
-    return redirect('homeLoggin')
+    else:
+        mot.closeDB()
+        return redirect('homeLoggin')
 
 
 def manageActivities(request, username=''):
