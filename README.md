@@ -1,2 +1,2 @@
 # deploySiamcoWeb
-Generador de cotizaciones para la empresa SIAMCO INGENIERIA SAS
+Generador de cotizaciones en formato PDF, para la empresa SIAMCO INGENIERIA SAS
